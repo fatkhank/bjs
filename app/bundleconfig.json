@@ -1,0 +1,395 @@
+[
+  {
+    "outputFileName": "js/b.js",
+    "inputFiles": [
+      "js/b/base.js",
+      "js/b/route.js",
+      "js/b/auth.js",
+      "js/b/ajax.js",
+      "js/b/lang.js",
+      "js/b/langs.js",
+      "js/b/local_cache.js",
+      "js/b/form_mapper.js",
+      "js/b/bootstrap.js",
+      "js/b/print.js",
+      "js/b/accesskey.js",
+      "js/b/ui/switcher.js",
+      "js/b/ui/dialog.js",
+      "js/b/ui/chooser.js",
+      "js/b/ui/components.js",
+      "js/b/ui/form_elms.js",
+      "js/b/ui/ptable.js",
+      "js/b/ui/content_tab.js",
+      "js/b/ui/crud_tab.js",
+      "js/b/ui/crud_card.js",
+      "js/b/ui/crud_list.js",
+      "js/b/ui/upload_excel.js",
+      "js/b/ui/image_chooser.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "js/wms.js",
+    "inputFiles": [
+      "js/wms/constants.js",
+      "js/wms/langs.js",
+      "js/wms/caches.js",
+      "js/wms/permissions.js",
+      "js/wms/parts.js",
+      "js/wms/choosers.js",
+      "js/wms/dialogs.js",
+      "js/wms/menus.js",
+      "js/wms/init.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "js/app.js",
+    "inputFiles": [
+      "js/b.js",
+      "js/wms.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/supplier.min.js",
+    "inputFiles": [
+      "parts/js/supplier.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/inbounds.min.js",
+    "inputFiles": [
+      "parts/js/inbounds.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/purchase_order.min.js",
+    "inputFiles": [
+      "parts/js/purchase_order.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/stock_items.min.js",
+    "inputFiles": [
+      "parts/js/stock_items.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/postal_service.min.js",
+    "inputFiles": [
+      "parts/js/postal_service.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/md_location.min.js",
+    "inputFiles": [
+      "parts/js/md_location.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/md_currency.min.js",
+    "inputFiles": [
+      "parts/js/md_currency.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/master_data.min.js",
+    "inputFiles": [
+      "parts/js/master_data.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/receiving.min.js",
+    "inputFiles": [
+      "parts/js/receiving.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/batches.min.js",
+    "inputFiles": [
+      "parts/js/batches.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/admin/adm_users.min.js",
+    "inputFiles": [
+      "parts/admin/adm_users.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/inbound_qc.min.js",
+    "inputFiles": [
+      "parts/js/inbound_qc.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/manufacturing_stock.min.js",
+    "inputFiles": [
+      "parts/js/manufacturing_stock.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/js/manufacturing_order.min.js",
+    "inputFiles": [
+      "parts/js/manufacturing_order.js"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "parts/suppliers.min.html",
+    "inputFiles": [
+      "parts/suppliers.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/stock_items.min.html",
+    "inputFiles": [
+      "parts/stock_items.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/sale_order.min.html",
+    "inputFiles": [
+      "parts/sale_order.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/manufacturing_stock.min.html",
+    "inputFiles": [
+      "parts/manufacturing_stock.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/manufacturing_order.min.html",
+    "inputFiles": [
+      "parts/manufacturing_order.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/receiving.min.html",
+    "inputFiles": [
+      "parts/receiving.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/purchase_order.min.html",
+    "inputFiles": [
+      "parts/purchase_order.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/postal_service.min.html",
+    "inputFiles": [
+      "parts/postal_service.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/picking.min.html",
+    "inputFiles": [
+      "parts/picking.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/md_location.min.html",
+    "inputFiles": [
+      "parts/md_location.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/md_currency.min.html",
+    "inputFiles": [
+      "parts/md_currency.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/master_data.min.html",
+    "inputFiles": [
+      "parts/master_data.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/manage_bast.min.html",
+    "inputFiles": [
+      "parts/manage_bast.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/inbound_qc.min.html",
+    "inputFiles": [
+      "parts/inbound_qc.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/batches.min.html",
+    "inputFiles": [
+      "parts/batches.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/admin/adm_users.min.html",
+    "inputFiles": [
+      "parts/admin/adm_users.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/ref_data.min.html",
+    "inputFiles": [
+      "parts/ref_data.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/sale_process.min.html",
+    "inputFiles": [
+      "parts/sale_process.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/admin/app_config.min.html",
+    "inputFiles": [
+      "parts/admin/app_config.html"
+    ]
+  },
+  {
+    "outputFileName": "libs/jquery.hotkeys.min.js",
+    "inputFiles": [
+      "libs/jquery.hotkeys.js"
+    ]
+  },
+  {
+    "outputFileName": "parts/stock_item_browser.min.html",
+    "inputFiles": [
+      "parts/stock_item_browser.html"
+    ]
+  },
+  {
+    "outputFileName": "libs/dropzone.min.js",
+    "inputFiles": [
+      "libs/dropzone.js"
+    ]
+  },
+  {
+    "outputFileName": "parts/sale_return.min.html",
+    "inputFiles": [
+      "parts/sale_return.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/stock_opname.min.html",
+    "inputFiles": [
+      "parts/stock_opname.html"
+    ]
+  },
+  {
+    "outputFileName": "fonts/roboto.min.css",
+    "inputFiles": [
+      "fonts/roboto.css"
+    ]
+  },
+  {
+    "outputFileName": "parts/mutasi.min.html",
+    "inputFiles": [
+      "parts/mutasi.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/breakage.min.html",
+    "inputFiles": [
+      "parts/breakage.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/loss.min.html",
+    "inputFiles": [
+      "parts/loss.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/manufacturing_bast.min.html",
+    "inputFiles": [
+      "parts/manufacturing_bast.html"
+    ]
+  },
+  {
+    "outputFileName": "libs/bundle.js",
+    "inputFiles": [
+      "libs/jquery-2.1.1-custom-build.min.js",
+      "libs/moment.min.js",
+      "libs/pikaday.min.js",
+      "libs/store.min.js",
+      "libs/jquery.hotkeys.min.js",
+      "libs/jquery.oauth-custom.min.js",
+      "libs/dropzone.min.js"
+    ]
+  },
+  {
+    "outputFileName": "libs/bundle.css",
+    "inputFiles": [
+      "libs/bootstrap_custom.min.css",
+      "libs/pikaday.css",
+      "libs/spinkit.css"
+    ]
+  },
+  {
+    "outputFileName": "fonts/bundle.css",
+    "inputFiles": [
+      "fonts/font-awesome.min.css",
+      "fonts/roboto.min.css"
+    ]
+  },
+  {
+    "outputFileName": "parts/loss_add.min.html",
+    "inputFiles": [
+      "parts/loss_add.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/purchase_return.min.html",
+    "inputFiles": [
+      "parts/purchase_return.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/stock_adjustment.min.html",
+    "inputFiles": [
+      "parts/stock_adjustment.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/stock_serials.min.html",
+    "inputFiles": [
+      "parts/stock_serials.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/dispatch.min.html",
+    "inputFiles": [
+      "parts/dispatch.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/purchase_receive.min.html",
+    "inputFiles": [
+      "parts/purchase_receive.html"
+    ]
+  },
+  {
+    "outputFileName": "parts/receive.min.html",
+    "inputFiles": [
+      "parts/receive.html"
+    ]
+  }
+]

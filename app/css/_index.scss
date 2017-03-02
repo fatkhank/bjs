@@ -1,0 +1,213 @@
+﻿@import './app/_variables.scss';
+
+p-menu#appLocationSelect {
+    padding-right: 5px;
+
+    select {
+        background: none;
+        border: none;
+        font-size: small;
+
+        option {
+            color: #222;
+            font-size: larger;
+        }
+    }
+}
+
+//
+p-menu#appCurrentUser {
+    padding-left: 5px;
+    font-size: small;
+
+    img {
+        border-radius: 2000px;
+        height: 50%;
+        margin-right: 5px;
+    }
+}
+
+//current user panel
+#appContentUser {
+    left: unset !important;
+    width: 300px;
+    z-index: 29; //below loading
+    background: $color_grey_med;
+    border-left: 10px solid #d3d3d3;
+    padding: 15px;
+    padding-top: 30px;
+    text-align: center;
+    transform-origin: right;
+
+    &[is-active] {
+        animation: slideleft 300ms both;
+    }
+
+    &:not([is-active]) {
+        animation: slideright 300ms forwards;
+
+        &:not(.hidden) {
+            display: block !important;
+        }
+    }
+
+    h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        background: rgba(0,0,0,0.02);
+        position: relative;
+        width: 100%;
+        float: left;
+
+        span:first-child {
+            color: $color_primary_light;
+            padding: 5px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 24px;
+            display: flex;
+            align-items: center;
+
+            i {
+                margin: auto;
+            }
+        }
+
+        span:last-child {
+            padding: 10px;
+            word-break: break-all;
+            text-align: left;
+            float: left;
+            margin-left: 20px;
+        }
+    }
+
+    button {
+        padding: 5px 10px;
+    }
+
+    #appFormChangePwd {
+        margin-top: 30px;
+        position: absolute;
+        bottom: 15px;
+        background: #e9e9e9;
+        padding: 10px;
+        left: 15px;
+        right: 15px;
+        overflow:hidden;
+        height:50px;
+        transition:height 300ms;
+
+        .input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        &:hover{
+            height:160px;
+        }
+
+        &:not(:hover) {
+            [btn]{
+                background:transparent;
+                color:#999;
+            }
+
+            &:not(.active) {
+                .input {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@-moz-keyframes slideleft {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@-webkit-keyframes slideleft {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideleft {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideright {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+//--- login form
+#appLoaderCover {
+    @include fix-container(0);
+    z-index: 100; //must beetween alert
+    background-color: #eee;
+    display: flex;
+    padding: $default_spacing;
+
+    #appLoginForm {
+        margin: auto;
+        width: 400px;
+        background: none;
+        border: none;
+
+        [btn] {
+            margin-top: 10px;
+            width: 100%;
+            min-height: 12mm;
+            font-size: large;
+        }
+
+        .group {
+            position: relative;
+
+            label {
+                /*padding: 0 !important;
+                width: 30px;*/
+                position: absolute;
+                right: 15px;
+                top: 10px;
+                color: rgba(0,0,0,0.2);
+            }
+
+            .inputs {
+                padding-right: 0 !important;
+
+                .input {
+                    height: 50px;
+                    width: 100%;
+                    background: rgba(0,0,0,0.04);
+                    border-bottom: transparent;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

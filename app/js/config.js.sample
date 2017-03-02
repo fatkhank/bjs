@@ -1,0 +1,4 @@
+﻿var VIEW_URL = 'http://localhost:8081/kuku/app/app/';
+var BASE_URL = 'http://localhost:8081/kuku/wms/public/';
+var BASE_API_URL = 'http://localhost:8081/kuku/wms/public/api/';
+var APP_DEBUG = true;
