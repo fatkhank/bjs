@@ -1,0 +1,24 @@
+@import '../_variables.scss';
+
+.dialog_task_runner {
+    .v-status {
+        max-height: 80px;
+        overflow: hidden;
+        transition: max-height linear 300ms;
+        &:hover {
+            max-height: 2000px;
+        }
+    }
+
+    .fail{
+        .v-status{
+            color:$color_red;
+        }
+    }
+
+    .done{
+        .v-status{
+            color:$color_green;
+        }
+    }
+}

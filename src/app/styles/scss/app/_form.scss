@@ -1,0 +1,101 @@
+﻿@import '../_variables.scss';
+
+//----- forms
+.form-packed {
+    .group {
+        /*display:none;
+        background:rgba(0,0,0,0.3);*/
+        margin-bottom: $default_spacing;
+
+        > label {
+            font-weight: bold;
+            width: 100%;
+
+            > .input {
+                height: unset;
+                border: none;
+            }
+        }
+
+        > .inputs {
+            flex-grow: 1;
+
+            &:not(:last-child) {
+                padding-right: $default_spacing;
+            }
+
+            .input {
+                width: 100%;
+            }
+        }
+    }
+
+    .table {
+    }
+}
+
+//
+.form-default {
+    display: table;
+    width: 100%;
+
+    &.striped {
+        .group:nth-child(2n) {
+            background-color: rgba(0,0,0,0.05);
+        }
+    }
+
+    .group {
+        width: 100%;
+        display: table-row;
+        padding: 5px;
+
+        > label {
+            padding: 5px;
+            padding-right: 10px;
+            display: table-cell;
+            max-width: 200px;
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;
+            -ms-word-break: break-word;
+            word-break: break-word;
+            vertical-align: middle;
+        }
+
+        > .inputs {
+            flex-grow: 1;
+            display: table-cell;
+            padding: 5px;
+            padding-left: 0;
+
+            .input {
+                width: 100%;
+            }
+        }
+
+        &.bold {
+            label, .input {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+//form inlint
+.form-inline {
+    display: flex;
+
+    .group {
+        display: flex;
+        margin-right: 15px;
+        align-items: baseline;
+
+        > label {
+            font-weight: bold;
+
+            select.input {
+                border: none;
+            }
+        }
+    }
+}

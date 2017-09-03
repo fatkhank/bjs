@@ -1,0 +1,268 @@
+﻿@import '../_variables.scss';
+p-col,
+.p-col {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    >p-top,
+    >.p-top,
+    >p-bottom,
+    >.p-bottom {
+        flex-shrink: 0;
+        z-index: 10;
+        position: relative;
+    }
+    >p-top,
+    >.p-top {
+        padding-bottom: 15px;
+    }
+    >p-bottom,
+    >.p-bottom {
+        padding-top: 15px;
+    }
+    >p-body,
+    >.p-body {
+        overflow: auto;
+        flex-grow: 1;
+        position: relative;
+    }
+    &.spaced {
+        >div:not(:last-child) {
+            margin-bottom: $default_spacing;
+        }
+    }
+    >div {
+        flex-grow: 1;
+        width: 100%;
+    }
+}
+
+p-row,
+.p-row {
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    &.bsline {
+        align-items: baseline;
+    }
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    >p-left,
+    >.p-left,
+    >p-right,
+    >.p-right {
+        flex-shrink: 0;
+        z-index: 10;
+        position: relative;
+    }
+    >p-body,
+    .p-body {
+        overflow: auto;
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        >div {
+            flex-grow: 1;
+        }
+    }
+    >div {
+        flex-grow: 1;
+        align-items: center;
+        &[data-grow='2'] {
+            flex-grow: 2;
+        }
+        &[data-grow='3'] {
+            flex-grow: 3;
+        }
+    }
+    .grow {
+        flex-grow: 1;
+    }
+    &.spaced {
+        >*:not(:last-child) {
+            margin-right: $default_spacing;
+        }
+        /*> p-left, > .p-left {
+            padding-right: 15px;
+        }
+
+        > p-right, > .p-right {
+            padding-left: 15px;
+        }*/
+    }
+}
+
+//padding & margin
+.padded {
+    padding-left: $default_spacing;
+    padding-right: $default_spacing;
+}
+
+.allpadded {
+    padding-top: $default_spacing;
+    padding-bottom: $default_spacing;
+    padding-left: $default_spacing;
+    padding-right: $default_spacing;
+}
+
+.padh0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.padv0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.celled {
+    white-space: nowrap;
+    width: 1px;
+}
+
+.fix-container {
+    @include fix-container(0);
+}
+
+.absolute-container {
+    @include absolute-container(0);
+}
+
+p-flexbar,
+.flex-bar {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+@for $i from 0 through 10 {
+    .grow#{$i} {
+        flex-grow: #{$i} !important;
+    }
+}
+
+//height&width
+.h100 {
+    height: 100%;
+}
+
+.h50 {
+    height: 50%;
+}
+
+.h0 {
+    height: 0;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w0 {
+    width: 0;
+}
+
+//margin&pad
+.pad0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.mar0 {
+    margin: 0 !important;
+}
+
+.martop0 {
+    margin-top: 0 !important;
+}
+
+.marbot0 {
+    margin-bottom: 0 !important;
+}
+
+.marl0 {
+    margin-left: 0 !important;
+}
+
+.marr0 {
+    margin-right: 0 !important;
+}
+
+.martop {
+    margin-top: $default_spacing !important;
+}
+
+.marbot {
+    margin-bottom: $default_spacing !important;
+}
+
+.marl {
+    margin-left: $default_spacing !important;
+}
+
+.marr {
+    margin-right: $default_spacing !important;
+}
+
+//--text utils
+.tacenter {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+// show/hide
+.hidden,
+.should-hide:not(.shown),
+.filter-shown>*:not(.shown) {
+    display: none!important;
+}
+
+//------------- colors
+.txt-red {
+    color: $color_red;
+}
+
+.txt-green {
+    color: $color_green;
+}
+
+.txt-blue {
+    color: $color_blue;
+}
+
+.bg-red {
+    background-color: $color_red;
+}
+
+.bg-green {
+    background-color: $color_green;
+}
+
+.bg-blue {
+    background-color: $color_blue;
+}

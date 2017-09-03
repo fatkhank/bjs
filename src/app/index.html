@@ -1,0 +1,524 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>App Name</title>
+    <!-- This meta is used -->
+    <meta name="application-name" content="App Name">
+    
+    <link rel="icon" sizes="192x192" href="img/logo_192.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2b5797" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="App Name">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="img/logo_192.png">
+    <link rel="apple-touch-startup-image" href="img/logo_192.png">
+
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">-->
+    <!--<link href="fonts/roboto.min.css" rel="stylesheet">
+    <link href="fonts/font-awesome.min.css" rel='stylesheet' type='text/css'>-->
+    <!--<link href="fonts/bundle.min.css" rel="stylesheet" media="none" onload="this.removeAttribute('media')" />-->
+
+    <!-------------------------- LIBS ------------------------------>
+
+    <!-- inject:libs/bootstrap_custom.min.css -->
+    <link href="libs/bootstrap_custom.min.css" rel='stylesheet' type='text/css' />
+    <!-- endinject -->
+
+    <!-- inject:libs/pikaday.css -->
+    <link href="libs/pikaday.css" rel='stylesheet' type='text/css' />
+    <!-- endinject -->
+
+    <!-- inject:libs/spinkit.css -->
+    <link href="libs/spinkit.css" rel='stylesheet' type='text/css' />
+    <!-- endinject -->
+
+    <!-------------------------- APP ------------------------------>
+
+    <!-- inject:styles/app.css -->
+    <link href="styles/app.css" rel="stylesheet" />
+    <!-- endinject -->
+</head>
+
+<body>
+    <section id="appHeader">
+        <div class="title">
+            <div class="logo">
+                <img src="data:image/png;base64,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"
+                />
+            </div>
+            <h4>Sistem Informasi Saluran Radio - Keminfo Republik Indonesia</h4>
+        </div>
+        <div class="menus">
+            <div id="appMainMenus">
+                <button class="toggler">
+                            <i class="fa fa-th-large fa-fw"></i><b></b>
+                        </button>
+                <p-menu sw-show="appContent" href="" class="sample" tabindex="0"><i class="fa fa-fw"></i>
+                    <a></a>
+                </p-menu>
+            </div>
+            <div id="appSecMenus">
+                <p-menu>
+                    <i class="fa fa-question-circle"></i>
+                    <p-t>help</p-t>
+                </p-menu>
+                <p-menu id="appCurrentUser" href="#appContentUser" sw-show="appContent" tabindex="0">
+                    <!--<img src="img/avatar_default.png" />-->
+                    <i class="fa fa-user-circle"></i>
+                    <label class="currentusername">Anonym</label>
+                </p-menu>
+            </div>
+        </div>
+    </section>
+    <section id="appBody">
+        <div id="appLoaderCover" class="loading">
+            <div class="card hidden" id="appLoginForm">
+                <div class="">
+                    <div class="group" style="text-align: center;margin-bottom: 30px;">
+                        <img src="img/logo_192.png" />
+                    </div>
+                    <div class="group">
+                        <div class="inputs">
+                            <input id="appLoginUsername" name="username" class="input block" list="userList" placeholder="Username" autofocus />
+                        </div>
+                        <label><i class="fa fa-user fa-2x"></i></label>
+                    </div>
+                    <div class="group">
+                        <div class="inputs">
+                            <input type="password" name="password" id="appLoginPassword" class="input block" placeholder="Password" />
+                        </div>
+                        <label><i class="fa fa-lock fa-2x"></i></label>
+                    </div>
+                </div>
+                <button id="appBtnLogin" btn class="block">LOGIN</button>
+            </div>
+        </div>
+        <p-app-content sw-view="appContent" id="appContentUser" class="hidden">
+            <div>
+                <h4><span><i class="fa fa-fw fa-user"></i></span><span class="name"></span></h4>
+                <h4><span><i class="fa fa-fw fa-at"></i></span><span class="email"></span></h4>
+                <button id="appBtnLogout" btn class="block">Logout</button>
+            </div>
+            <div id="appFormChangePwd">
+                <input class="input" type="password" name="old_pwd" placeholder="Sandi Lama" />
+                <input class="input" type="password" name="new_pwd" placeholder="Sandi Baru" />
+                <input class="input" type="password" name="new_pwd2" placeholder="Konfirm Sandi Baru" />
+                <button id="appBtnChangePwd" btn class="block">Ganti Sandi</button>
+            </div>
+        </p-app-content>
+    </section>
+    <section id="appFooter">
+        <h4>&copy; 2017 Kukuruyuk All Right Reserved. Developed By Reston Bisnis Solusi</h4>
+    </section>
+    <!--<section id="appPrintArea"></section>-->
+    <iframe id="appPrintArea"></iframe>
+    <div id="appParts"></div>
+    <div id="appSamples">
+        <p-chooser class="sample">
+            <button type="button" class="input">
+                <span></span>
+                <i class="fa fa-list-alt"></i>
+            </button>
+        </p-chooser>
+
+        <p-dialog class="chooser-dialog sample">
+            <p-content>
+                <p-head>
+                    <h4 class="ch-dialog-title"></h4>
+                </p-head>
+                <p-body>
+                    <div class="actions p-row hidden">
+                        <div class="p-row spaced">
+                            <input class="ch-search" placeholder="cari" />
+                        </div>
+                        <button btn="prev"><i class="fa fa-chevron-left"></i></button>
+                        <button btn="next"><i class="fa fa-chevron-right"></i></button>
+                    </div>
+                    <div>
+                        <p-table class="table">
+                            <p-head>
+                                <p-r class="ch-titles">
+                                    <p-c class="sample">?</p-c>
+                                </p-r>
+                            </p-head>
+                            <p-body class="ch-item-container">
+                                <p-r class="ch-item sample" tabindex="0">
+                                    <p-c class="ch-v sample">?</p-c>
+                                </p-r>
+                            </p-body>
+                        </p-table>
+                    </div>
+                </p-body>
+                <p-foot class="actions p-row spaced">
+                    <p-left>
+                        <button btn="reload"><b><p-t>reload</p-t></b></button>
+                        <button btn="add" class="hidden"><b><p-t>add</p-t></b></button>
+                    </p-left>
+                    <p-body>
+                        <span class="ch-status">
+                            <b class="ch-selected"></b><b class="ch-count"></b> <span>selected</span>
+                        </span>
+                    </p-body>
+                    <p-right>
+                        <button class="hidden" btn="ok"><b><p-t>ok</p-t></b></button>
+                        <button btn="empty"><p-t>empty</p-t></button>
+                        <button btn="cancel"><b><p-t>cancel</p-t></b></button>
+                    </p-right>
+                </p-foot>
+            </p-content>
+        </p-dialog>
+
+        <p-datepicker class="sample input">
+            <input name="date" class="input" />
+            <i class="fa fa-calendar"></i>
+            <div>
+
+            </div>
+        </p-datepicker>
+
+        <p-dialog class="confirm-dialog sample">
+            <p-content>
+                <p-body>
+                    <h4 class="confirm-msg" style="margin-top:0"></h4>
+                </p-body>
+                <p-foot class="actions p-row spaced">
+                    <button btn="yes"><b><p-t>yes</p-t></b></button>
+                    <button btn="no"><b><p-t>no</p-t></b></button>
+                </p-foot>
+            </p-content>
+        </p-dialog>
+        <p-dialog class="prompt-dialog sample">
+            <p-content>
+                <p-head>
+                    <h4 class=""></h4>
+                </p-head>
+                <p-body>
+                    <p class="v-msg" style="margin-top:0"></p>
+                    <div class="form-default">
+                        <input class="v-val" />
+                    </div>
+                </p-body>
+                <p-foot class="actions p-row">
+                    <p-body>
+                        <button btn="save"><b><p-t>continue</p-t></b></button>
+                    </p-body>
+                    <p-right>
+                        <button btn="cancel"><b><p-t>cancel</p-t></b></button>
+                    </p-right>
+                </p-foot>
+            </p-content>
+        </p-dialog>
+
+        <span class="money sample">
+            <span class="symbol"></span>
+        <span class="amount"></span>
+        </span>
+        <div class="input-money sample">
+            <span class="symbol"></span>
+            <span class="val">
+                <input type="number" class="input" min="0" placeholder=" " />
+                <span class="display">-</span>
+            </span>
+        </div>
+        <div class="input-whole sample">
+            <input class="input" type="number" min="0" step="1" value="0" />
+        </div>
+        <div class="input-float sample">
+            <input class="input" type="number" min="0" step="0.0001" value="0" />
+        </div>
+        <div class="input-percent sample">
+            <input class="input" type="number" min="0" step="0.01" />
+            <b>%</b>
+        </div>
+        <div class="i-check sample">
+            <button><i class="fa fa-check"></i></button>
+        </div>
+        <div class="i-radio sample">
+            <button></button>
+            <label></label>
+        </div>
+        <div class="view-json sample">
+            <div class="prop"><b class="key"></b>
+                <div class="val"></div>
+            </div>
+        </div>
+        <p-label lbl></p-label>
+        <div class="input-text sample" contenteditable="true" tabindex="0"></div>
+        <div class="progress">
+            <div class="bar"></div>
+            <label></label>
+        </div>
+
+        <p-tree class="tree">
+            <div class="parent">
+                <button btn="tree-caret" class="hidden"><i class="fa fa-caret-down"></i></button>
+                <button btn="tree-add"><i class="fa fa-plus-circle"></i><b><p-t>add</p-t></b></button>
+            </div>
+            <ul class="children">
+                <li class="tree">
+                    <div class="parent">
+                        <button btn="tree-caret"><i class="fa fa-caret-down"></i></button>
+                        <div></div>
+                        <button btn="tree-add"><i class="fa fa-plus-circle"></i></button>
+                        <button btn="tree-remove"><i class="fa fa-close"></i></button>
+                        <button btn="tree-unremove"><i class="fa fa-refresh"></i></button>
+                    </div>
+                    <ul class="children"></ul>
+                </li>
+            </ul>
+        </p-tree>
+
+        <div class="loading-status sample">
+            <div class="loading">
+                <div class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <div class="text"></div>
+            </div>
+        </div>
+
+        <p-app-content sw-view="appContent" class="vertical-menu sample">
+            <div class="menus">
+                <h4 class="title"></h4>
+                <button class="toggler"></button>
+                <p-menu class="sample" tabindex="0"><i class="fa fa-lg fa-fw"></i>
+                    <a></a>
+                </p-menu>
+            </div>
+            <div class="contents">
+                <p-content class="sample"></p-content>
+            </div>
+        </p-app-content>
+        <p-app-content sw-view="appContent" class="sample"></p-app-content>
+
+        <div class="p-select">
+            <button class="input"></button>
+            <ul class="empty">
+                <li tabindex="0"></li>
+            </ul>
+        </div>
+        <select class="p-select input">
+            <option></option>
+        </select>
+
+        <span class="crudtab-list_navbadge sample"><i class="fa fa-spinner fa-spin fa-pulse fa-fw"></i></span>
+        <div class="crudtab-list_nav sample">
+            <button btn="reload"><i class="fa fa-refresh"></i></button>
+            <button btn="prev"><i class="fa fa-chevron-left"></i></button>
+            <button btn="next"><i class="fa fa-chevron-right"></i></button>
+            <p-row>
+                <span>hal.</span>
+                <input class="list_nav-current input tacenter" type="number" min="1" />
+                <span>/</span>
+                <span class="list_nav-total"></span>
+            </p-row>
+        </div>
+
+        <p-dialog class="img-chooser-dialog sample">
+            <p-content>
+                <p-head>
+                    <h4>
+                        <p-t key="choose_x">
+                            <p-t>image</p-t>
+                        </p-t>
+                    </h4>
+                </p-head>
+                <p-body class="p-col spaced">
+                    <div class="dropzone">
+                        <div class="dz-message">
+                            <p-t>click_or_drop_file</p-t>
+                        </div>
+                        <div class="dz-preview dz-file-preview sample imgc-prev">
+                            <div class="dz-details">
+                                <img data-dz-thumbnail />
+                                <div class="dz-filename"><span data-dz-name></span></div>
+                                <!--<div class="dz-size" data-dz-size></div>-->
+                            </div>
+                            <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                            <!--<div class="dz-success-mark"><span><i class="fa fa-check"></i></span></div>
+                            <div class="dz-error-mark"><span><i class="fa fa-close"></i></span></div>-->
+                            <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                        </div>
+                    </div>
+                    <p-row>
+                        <p-body>
+                            <input class="v-url w100" placeholder="Insert URL" />
+                        </p-body>
+                        <p-right>
+                            <button btn="add">Tambah URL</button>
+                        </p-right>
+                    </p-row>
+                </p-body>
+                <!--<p-foot class="actions p-row spaced">
+                    <p-left></p-left>
+                    <p-right>
+                        <button btn="ok"><b><p-t>ok</p-t></b></button>
+                        <button btn="cancel"><b><p-t>cancel</p-t></b></button>
+                    </p-right>
+                </p-foot>-->
+            </p-content>
+        </p-dialog>
+
+        <p-dialog class="upload-excel-dialog sample">
+            <p-content>
+                <p-head>
+                    <h4>
+                        <p-t key="choose_x">
+                            <p-t>excel</p-t>
+                        </p-t>
+                    </h4>
+                </p-head>
+                <p-body class="">
+                    <div class="dropzone">
+                        <div class="dz-message">
+                            <h4>Klik kotak atau jatuhkan berkas ke dalam kotak ini</h4>
+                            <ul>
+                                <li>Pastikan data yang akan diproses berada di sheet pertama</li>
+                                <li>Klik daftar berkas yang ada disamping kanan untuk mengunduh hasil.</li>
+                            </ul>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="other">
+                            <p-row class="top">
+                                <a btn="template" class="grow1"><b><p-t>download_template</p-t></b></a>
+                            </p-row>
+                            <div class="dropzone-previews grow1">
+                                <div class="dz-preview dz-file-preview sample upex-prev">
+                                    <a class="dz-details" target="_blank" href="">
+                                        <div>
+                                            <div class="dz-filename"><span data-dz-name></span></div>
+                                            <span class="upex-status"></span>
+                                        </div>
+                                    </a>
+                                    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                                    <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                                </div>
+                            </div>
+                            <p-row class="spaced wrap bottom">
+                                <button btn="empty"><b><p-t>empty_v</p-t></b></button>
+                                <button btn="cancel"><b><p-t>cancel</p-t></b></button>
+                            </p-row>
+                        </div>
+                    </div>
+                </p-body>
+            </p-content>
+        </p-dialog>
+
+        <p-dialog class="sample dialog_task_runner">
+            <p-content>
+                <p-head>
+                    <h4 class="title"></h4>
+                </p-head>
+                <p-body class="p-col spaced">
+                    <div class="p-col">
+                        <button btn="close" class="hidden"><i class="fa fa-times"></i><b>Tutup</b></button>
+                        <button btn="stop" class=""><i class="fa fa-stop"></i><b>Berhenti</b></button>
+                    </div>
+                    <div style="max-height:400px;overflow:auto">
+                        <p-table class="compact table_tasks">
+                            <p-body class="numbering-reset">
+                                <p-r class="fresh">
+                                    <p-c class="numbering"></p-c>
+                                    <p-c class="v-task"></p-c>
+                                    <p-c>
+                                        <div class="v-status"></div>
+                                    </p-c>
+                                </p-r>
+                            </p-body>
+                        </p-table>
+                    </div>
+                </p-body>
+            </p-content>
+        </p-dialog>
+    </div>
+    <div id="appDialogs">
+        <p-dialog class="crudc-dialog sample">
+            <p-content>
+                <p-head>
+                    <h4>Create</h4>
+                </p-head>
+                <p-body class="md-form">
+
+                </p-body>
+                <p-foot class="actions p-row spaced">
+                    <p-left>
+                        <button btn="delete"><i class="fa fa-trash"></i><b><p-t>delete</p-t></b></button>
+                    </p-left>
+                    <p-body></p-body>
+                    <p-right class="p-right">
+                        <button btn="save"><i class="fa fa-save"></i><b><p-t>save</p-t></b></button>
+                        <button btn="cancel"><i class="fa fa-close"></i><b><p-t>cancel</p-t></b></button>
+                    </p-right>
+                </p-foot>
+            </p-content>
+        </p-dialog>
+    </div>
+
+    <div id="appNotifs" class="hidden">
+        <div class="notif">
+            <div class="msg"></div>
+            <button btn class="hidden"></button>
+            <button class="fa fa-times x hidden"></button>
+        </div>
+    </div>
+
+    <!-------------------------- LIBS ------------------------------>
+
+    <!-- inject:libs/jquery-2.1.1-custom-build.min.js -->
+    <script type="text/javascript" src="libs/jquery-2.1.1-custom-build.min.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:libs/moment.js -->
+    <script type="text/javascript" src="libs/moment.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:libs/pikaday.js -->
+    <script type="text/javascript" src="libs/pikaday.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:libs/store.min.js -->
+    <script type="text/javascript" src="libs/store.min.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:libs/jquery.hotkeys.js -->
+    <script type="text/javascript" src="libs/jquery.hotkeys.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:libs/jquery.oauth-custom.js -->
+    <script type="text/javascript" src="libs/jquery.oauth-custom.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:libs/dropzone.js -->
+    <script type="text/javascript" src="libs/dropzone.js"></script>
+    <!-- endinject -->
+
+    <!-------------------------- APP ------------------------------>
+
+    <!-- inject:config -->
+    <script type="text/javascript" src="dev.config.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:scripts/app.js -->
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <!-- endinject -->
+
+
+    <!-------------------------- FONTS ------------------------------>
+
+    <!-- inject:fonts/font-awesome.build.css -->
+    <link href="fonts/font-awesome.css" rel="stylesheet" />
+    <!-- endinject -->
+
+    <!-- inject:fonts/roboto-nbi.embed.css -->
+    <link href="fonts/roboto-nbi.css" rel="stylesheet" />
+    <!-- endinject -->
+</body>
+
+</html>

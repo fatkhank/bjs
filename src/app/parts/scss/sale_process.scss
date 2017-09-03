@@ -1,0 +1,124 @@
+﻿.partOutbound {
+    .v-packing_item {
+        margin-right: 10px;
+    }
+    .items_table {
+        .v-item_qty {
+            font-weight: bold;
+        }
+        .d-item {
+            min-width: 120px;
+        }
+        .d-item .c-img {
+            max-width: 80px;
+            flex-grow: 0;
+        }
+        .d-batch_num {
+            width: 100px;
+            flex-grow: 0;
+        }
+        .d-batch_loc {
+            width: 100px;
+            flex-grow: 0;
+        }
+        .d-batch_qty {
+            width: 80px;
+            flex-grow: 0;
+        }
+        .d-item_serial>div {
+            text-align: center;
+        }
+        .d-sn {
+            width: 200px;
+            flex-grow: 0;
+        }
+        .d-sn_type {
+            width: 150px;
+            flex-grow: 0;
+        }
+        .d-location {
+            width: 150px;
+            flex-grow: 0;
+        }
+        .d-picked {
+            width: 100px;
+            flex-grow: 0;
+        }
+        .d-batch_qc {
+            min-width: 200px;
+        }
+        .d-batch_rmv {
+            width: 40px;
+            flex-grow: 0;
+        }
+        .d-batch_rmv button {
+            min-height: 8mm;
+        }
+        .d-batch_note div {
+            overflow: auto;
+        }
+        [btn=pick_batch] {
+            min-height: 8mm;
+        }
+    }
+    [btn=qc_edit] {
+        height: 100%;
+    }
+    /*.dialog_qc_chksheet .d-delimiter {
+        border-left: 3px solid #ccc;
+    }*/
+    .packing_card {
+        .d-pack_item.excluded {
+            color: #999 !important;
+            .d-item_sku,
+            .d-item_batch_sn {
+                text-decoration: line-through;
+            }
+        }
+        .v-total_qty {
+            font-weight: bold;
+        }
+        .d-item_sku {
+            width: 130px;
+        }
+        .d-item_batch_num {
+            width: 100px;
+            flex-grow: 0;
+        }
+        .d-item_qty {
+            width: 100px;
+            flex-grow: 0;
+        }
+        .d-pack_rmv {
+            width: 40px;
+            flex-grow: 0;
+        }
+        .v-pack_items button {
+            height: 8mm;
+        }
+        .input-whole {
+            min-width: unset;
+            width: 50px;
+            input {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        .d-pack_ship_info {
+            width: 200px;
+        }
+    }
+}
+
+.dialog_qc_chksheet {
+    .d-qc_radio {
+        flex-grow: 0;
+        width: 40px;
+    }
+    .d-qc_note,
+    .v-old_note,
+    .v-note {
+        flex-grow: 0;
+        width: 200px;
+    }
+}

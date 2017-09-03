@@ -1,0 +1,39 @@
+@import '../_variables.scss';
+
+//--- label
+p-label {
+    padding: 2px 5px; //border-radius: 5px;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    border-left: 3px solid transparent;
+    margin: 0 3px;
+    border-right: 3px solid transparent;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.04);
+    &[lbl='default'] {
+        color: #666;
+        border-color: #666;
+        background: rgba(#666, 0.1);
+    }
+    &[lbl='green'] {
+        color: $color_green_goggle;
+        border-color: $color_green_goggle;
+        background: rgba($color_green_goggle, 0.1);
+    }
+    &[lbl='red'] {
+        color: $color_red_goggle;
+        border-color: $color_red_goggle;
+        background: rgba($color_red_goggle, 0.1);
+    }
+    &[lbl='orange'] {
+        color: $color_yellow;
+        border-color: $color_yellow;
+        background: rgba($color_yellow, 0.1);
+    }
+    &[lbl='blue'] {
+        color: $color_blue_goggle;
+        border-color: $color_blue_goggle;
+        background: rgba($color_blue_goggle, 0.1);
+    }
+}

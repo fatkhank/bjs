@@ -1,0 +1,91 @@
+﻿@import '../_variables.scss';
+.upload-excel-dialog {
+    .dropzone {
+        display: flex;
+        margin-top: $default_spacing;
+        min-height: 300px;
+        flex-wrap: wrap;
+
+        .dz-message {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            h4 {
+                font-size: larger;
+                color: #999;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        .spacer {
+            min-width: $default_spacing;
+            min-height: $default_spacing;
+        }
+    }
+    h4 {
+        margin: 0;
+    }
+    .dropzone-previews {
+        max-height: 450px;
+        overflow: auto;
+    }
+    .other {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        .top {
+            border-bottom: 1px solid $color_grey_med;
+        }
+        .bottom {
+            border-top: 1px solid $color_grey_med;
+            button {
+                flex-grow: 1;
+            }
+        }
+    }
+    a.dz-details {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        color: $color_text !important;
+        text-decoration: none;
+        position: relative;
+        &:hover {
+            background: $color_secondary_transparent;
+        }
+        .dz-filename{
+            flex-grow: 1;
+            display: inline;
+            margin-right: $default_spacing;
+        }
+        .upex-status {
+            font-size: smaller;
+            color: #777;
+            flex-wrap: 1;
+        }
+        >div {
+            flex-grow: 1;
+            display: flex;
+        }
+        &::before {
+            content: '';
+            font-family: FontAweSome;
+            display: inline-block;
+            font-size: 25px;
+            padding-right: $default_spacing;
+        }
+        &.upex-success::before {
+            content: '\f058';
+            color: $color_green;
+        }
+        &.upex-error::before {
+            content: '\f06a';
+            color: $color_red;
+        }
+    }
+}

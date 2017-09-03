@@ -1,0 +1,37 @@
+<IfModule mod_rewrite.c>
+	Allow from all
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+	
+	# compress
+	<IfModule mod_deflate.c>
+		<FilesMatch "\.(html|php|txt|xml|js|css)$">
+			SetOutputFilter DEFLATE
+		</FilesMatch>
+	</IfModule>
+	
+	# 480 weeks
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|woff|woff2|html)$">
+		Header set Cache-Control "max-age=290304000, public"
+    </FilesMatch>
+	
+    RewriteEngine On
+	
+	# open main view
+	RewriteRule ^$ index.html [ENV=TEST:true]
+	Header set Cache-Control "max-age=290304000, public" env=REDIRECT_TEST
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+	
+    # Handle Front Controller...
+	
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+	
+	RewriteCond %{HTTP:Authorization} .
+	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>

@@ -1,0 +1,150 @@
+﻿@import '../_variables.scss';
+
+@-moz-keyframes notifout {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(120%);
+    }
+}
+
+@-webkit-keyframes notifout {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(120%);
+    }
+}
+
+@keyframes notifout {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(120%);
+    }
+}
+
+
+/* Animations to fade the snackbar in and out */
+@-moz-keyframes notifin {
+    from {
+        margin-top: -48px;
+        transform: translateY(100%);
+    }
+
+    to {
+        margin-top: 0;
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes notifin {
+    from {
+        margin-top: -48px;
+        transform: translateY(100%);
+    }
+
+    to {
+        margin-top: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes notifin {
+    from {
+        margin-top: -48px;
+        transform: translateY(100%);
+    }
+
+    to {
+        margin-top: 0;
+        transform: translateY(0);
+    }
+}
+
+//---- notifs
+#appNotifs {
+    position: fixed;
+    display: inline-flex;
+    flex-direction: column;
+    bottom: $appfooter_height;
+    align-items: flex-end;
+    padding: $default_spacing;
+    z-index: $zxNotifications;
+    right: 0;
+
+    .notif {
+        min-width: 250px; /* Set a default minimum width */
+        max-width: 100%;
+        background-color: #333; /* Black background color */
+        color: #fff; /* White text color */
+        position: relative;
+        margin-bottom: $default_spacing;
+        height: 48px;
+        border-left: 5px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-flex;
+        animation: notifin 0.5s;
+
+        .msg {
+            padding: 18px 15px; /* Padding */
+            flex-grow: 1;
+        }
+
+        button {
+            float: right;
+            background: transparent;
+            border: none;
+            min-width: $size_finger_friendly;
+
+            &:hover {
+                background: rgba(0,0,0,0.2);
+            }
+        }
+
+        &.red {
+            border-color: $color_red_dark;
+            background: $color_red;
+            font-weight: bold;
+        }
+
+        &.green {
+            border-color: $color_green_dark;
+            background: $color_green;
+            font-weight: bold;
+        }
+
+        &.short {
+            -webkit-animation: notifin 0.5s, notifout 0.5s 2.5s forwards;
+            animation: notifin 0.5s, notifout 0.5s 2.5s forwards;
+        }
+
+        &.long {
+            -webkit-animation: notifin 0.5s, notifout 0.5s 3.3s forwards;
+            animation: notifin 0.5s, notifout 0.5s 3.3s forwards;
+        }
+
+        &.longer {
+            -webkit-animation: notifin 0.5s, notifout 0.5s 4s forwards;
+            animation: notifin 0.5s, notifout 0.5s 4s forwards;
+        }
+
+        &.dismiss {
+            -webkit-animation: notifout 0.5s forwards;
+            animation: notifout 0.5s forwards;
+        }
+
+        &.sticky:not(.dismiss) {
+            -webkit-animation: notifin 0.5s;
+            animation: notifin 0.5s;
+        }
+    }
+}

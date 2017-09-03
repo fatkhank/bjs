@@ -1,0 +1,577 @@
+﻿@import '_variables.scss';
+$color_mainmenu_highlight:rgba(255, 255, 255, 0.1);
+//--- login form
+#appLoaderCover {
+    @include fix-container(0);
+    z-index: $zxAppLoaderCover; //must beetween alert
+    background-color: #eee;
+    display: flex;
+    padding: $default_spacing;
+    #appLoginForm {
+        margin: auto;
+        width: 400px;
+        background: none;
+        border: none;
+        [btn] {
+            margin-top: 10px;
+            width: 100%;
+            min-height: 12mm;
+            font-size: large;
+        }
+        .group {
+            position: relative;
+            label {
+                /*padding: 0 !important;
+                width: 30px;*/
+                position: absolute;
+                right: 15px;
+                top: 10px;
+                color: rgba(0, 0, 0, 0.2);
+            }
+            .inputs {
+                padding-right: 0 !important;
+                .input {
+                    height: 50px;
+                    width: 100%;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+body {
+    color: $color_text;
+    display: inline-flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    @include fix-container(0);
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    line-height: 1;
+}
+
+#appHeader {
+    color: white;
+    height: $appheader_height;
+    min-height: $appheader_height;
+    flex-basis: $appheader_height;
+    position: relative;
+    z-index: $zxAppHeader;
+    margin-bottom: -1px; //hack to remove misterious space beetween head and body
+    >.title {
+        display: inline-flex;
+        height: $appheader_title_height;
+        width: 100%;
+        align-items: center;
+        background: $color_primary;
+        position: relative;
+        h4 {
+            margin: 0;
+            padding: $default_spacing;
+            text-align: center;
+            width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+    .logo {
+        height: 100%;
+        background: #fff;
+        border-bottom-right-radius: 200px;
+        padding: 3px 10px 3px 3px;
+        img {
+            height: 100%;
+        }
+    }
+    @media #{$submenubar_break} {
+        padding: 0;
+        min-height: 12mm;
+        flex-basis: 12mm;
+        height: 12mm;
+        &.showmenu {
+            >.title {
+                position: absolute;
+                top: $mainmenu_height;
+                z-index: 20;
+                background: transparent;
+                color: $color_primary;
+                border-bottom: thin solid #ccc;
+            }
+            .logo {
+                background: transparent;
+            }
+        }
+        &:not(.showmenu) {
+            >.title {
+                display: none;
+            }
+        }
+    }
+    >.menus {
+        width: 100%;
+        height: $mainmenu_height;
+        display: inline-flex;
+        position: relative;
+        justify-content: space-between; //    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        border-bottom: 1mm solid $pbody_bgcolor;
+        >div {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            background-color: $appheader_color;
+            &:last-child {
+                padding-left: 15px;
+                flex-shrink: 0;
+            }
+        }
+    }
+    p-menu {
+        //height: $appheader_height;
+        height: $mainmenu_height;
+        padding: 0 10px;
+        font-weight: bold;
+        font-size: 1.1em;
+        position: relative;
+        cursor: default;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
+        &:hover {
+            background: $color_mainmenu_highlight;
+        }
+        &[is-active] {
+            background: $color_grey_med;
+            color: $color_primary;
+            flex-shrink: 0; //border-top: 5px solid;
+            //margin-top: -5px;//if has logo
+            >a {
+                color: $color_primary;
+            }
+        }
+        >a {
+            display: block;
+            overflow: hidden;
+            -ms-text-overflow: clip;
+            -o-text-overflow: clip;
+            text-overflow: clip;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}
+
+#appBody {
+    position: relative;
+    flex-grow: 1;
+    background: $pbody_bgcolor;
+    >p-app-content {
+        @include absolute-container(0, $appfooter_height);
+        &:not([is-active]) {
+            display: none;
+        }
+        &[is-active] {
+            &[anim=left] {
+                animation: slideFromRight 300ms both;
+            }
+            &[anim=right] {
+                animation: slideFromLeft 300ms both;
+            }
+        }
+    }
+    .part-title {
+        color: $color_primary;
+        border-bottom: 1px solid #ccc;
+    } //low width screen
+    @media #{$submenubar_break} {
+        &.showmenu {
+            display: flex;
+            /*flex-direction: column;
+            flex-wrap: wrap;*/
+            overflow: auto;
+            align-content: flex-start;
+            flex-direction: row;
+            >p-app-content {
+                position: relative;
+                overflow: visible;
+                padding-top: $appheader_title_height;
+                &:not([is-active]) {
+                    display: block;
+                }
+                &.vertical-menu>.contents {
+                    display: none;
+                }
+                &[is-active] {
+                    .menus {
+                        >p-menu[is-active] {
+                            background: rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+                >.menus {
+                    border-right: 1px dashed rgba(100, 100, 100, .2);
+                    height: 90%;
+                    .toggler {
+                        display: none;
+                    }
+                    .title {
+                        display: block;
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: $color_primary;
+                    }
+                    >p-menu {
+                        background: none;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+        &:not(.showmenu) {
+            >p-app-content.vertical-menu>.menus {
+                display: none;
+            }
+        }
+    }
+}
+
+#appMainMenus {
+    flex-grow: 1;
+    >.toggler {
+        display: none;
+        b {
+            padding-left: 5px;
+        }
+        @media #{$submenubar_break} {
+            display: block;
+            background: none;
+            border: none;
+            height: 100%;
+        }
+        &.active {
+            background: $color_grey_med;
+            color: $color_primary;
+        }
+        &:hover:not(.active) {
+            background: $color_mainmenu_highlight;
+            color: #fff;
+        }
+    }
+    p-menu {
+        flex-grow: 1;
+        max-width: 140px;
+        @media #{$submenubar_break} {
+            display: none;
+        }
+        i {
+            margin-right: 5px;
+            font-size: 20px;
+        }
+        a {
+            overflow: hidden;
+        }
+    }
+}
+
+#appSecMenus {
+    p-menu {
+        i {
+            font-size: 14px;
+            width: 18px;
+            text-align: center;
+        }
+    }
+}
+
+$submenuTogglerHeight: 40px;
+$submenuTogglerWidth: 15px;
+#appBody.hide-submenu .menus {
+    min-width: 15px;
+    &:not(:hover) {
+        animation: slideToLeft 300ms forwards;
+        margin-left: $submenuTogglerWidth;
+    }
+    &:hover {
+        animation: slideFromLeft 300ms forwards;
+        p-menu {
+            width: 100%;
+            padding-left: $default_spacing;
+            padding-right: $default_spacing;
+        }
+    }
+    >p-menu {
+        width: 0;
+        overflow: hidden;
+        padding-left: 0;
+        padding-right: 0;
+        border: none;
+    }
+    >.toggler {
+        height: 100%;
+        bottom: 0;
+        margin-bottom: unset;
+        &:not(:hover) {
+            background: none;
+        }
+        &::before {
+            content: '\f101';
+        }
+    }
+}
+
+.vertical-menu {
+    @include absolute-container(0);
+    display: inline-flex;
+    $color_submenu_highlight: rgba(100, 100, 100, 0.2);
+    $borderwidth_activesubmenu: 4px;
+    $padding_left_submenu: $default_spacing + $default_spacing;
+    >.menus {
+        right: unset;
+        display: inline-flex;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -ms-align-content: center;
+        -webkit-align-content: center;
+        align-content: center;
+        z-index: 20;
+        border-right: 2px solid $color_submenu_highlight;
+        white-space: nowrap;
+        margin: $default_spacing 0;
+        min-width: 120px;
+        flex-shrink: 0;
+        position: relative;
+        >p-menu {
+            margin-bottom: 3px;
+            padding: 5px 2*$default_spacing;
+            min-height: 12mm;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 13px;
+            cursor: default;
+            i {}
+            a {
+                color: #444;
+            }
+            &[is-active] {
+                background-color: $color_submenu_highlight;
+                border-left: $borderwidth_activesubmenu solid $color_primary;
+                padding-left: $padding_left_submenu - $borderwidth_activesubmenu;
+            }
+            &:hover {
+                background: rgba(100, 100, 100, 0.07);
+            }
+        }
+        >.toggler {
+            background: $color_submenu_highlight;
+            border: none;
+            position: absolute;
+            right: 0;
+            bottom: 50%;
+            height: $submenuTogglerHeight;
+            margin-bottom: -$submenuTogglerHeight/2;
+            width: $submenuTogglerWidth;
+            padding: 3px;
+            transition: all 300ms;
+            color: $color_secondary_dark;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            &::before {
+                font-family: FontAwesome;
+                content: '\f100';
+            }
+        }
+        .title {
+            display: none;
+        }
+    }
+    >.contents {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        >p-content {
+            flex-grow: 1;
+            overflow: auto;
+            position: relative;
+            &:not([is-active]) {
+                display: none;
+            }
+            &.no-pad {
+                padding: 0;
+            }
+        }
+    }
+}
+
+//--- only show header and body
+#appParts,
+#appSamples {
+    display: none;
+}
+
+#appPrintArea {
+    display: none;
+    /*width:0;
+    height:0;
+    position:fixed;*/
+}
+
+@media print {
+    #appPrintArea {
+        display: block;
+    }
+    body> :not(#appPrintArea) {
+        display: none !important;
+    }
+}
+
+//
+#appHeader p-menu#appCurrentUser {
+    padding-left: 5px;
+    font-size: small;
+    img {
+        border-radius: 2000px;
+        height: 50%;
+        margin-right: 5px;
+    }
+    i {
+        padding-right: 10px;
+    }
+    @media #{$submenubar_break} {
+        width: 12mm;
+        i {
+            padding: 0;
+        }
+        label {
+            display: none;
+        }
+    }
+}
+
+#appFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: $appfooter_height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    z-index: $zxAppHeader;
+    font-size: 12px;
+    h4 {
+        font-weight: normal;
+        margin: 0;
+    }
+    @media #{$submenubar_break} {
+        display: none;
+    }
+}
+
+//current user panel
+#appContentUser {
+    left: unset !important;
+    width: 300px;
+    z-index: $zxRightbar; //above loading
+    background: $color_grey_med;
+    border-left: 10px solid #d3d3d3;
+    padding: 15px;
+    padding-top: 30px;
+    text-align: center;
+    transform-origin: right;
+    &[is-active] {
+        animation: slideFromRight 300ms both;
+    }
+    &:not([is-active]) {
+        animation: slideToRight 300ms forwards;
+        &:not(.hidden) {
+            display: block !important;
+        }
+    }
+    h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0.02);
+        position: relative;
+        width: 100%;
+        float: left;
+        span:first-child {
+            color: $color_primary_light;
+            padding: 5px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 24px;
+            display: flex;
+            align-items: center;
+            i {
+                margin: auto;
+            }
+        }
+        span:last-child {
+            padding: 10px;
+            word-break: break-all;
+            text-align: left;
+            float: left;
+            margin-left: 20px;
+        }
+    }
+    button {
+        padding: 5px 10px;
+    }
+    #appFormChangePwd {
+        margin-top: 30px;
+        position: absolute;
+        bottom: 15px;
+        background: #e9e9e9;
+        padding: 10px;
+        left: 15px;
+        right: 15px;
+        overflow: hidden;
+        height: 50px;
+        transition: height 300ms;
+        .input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        &:hover {
+            height: 160px;
+        }
+        &:not(:hover) {
+            [btn] {
+                background: transparent;
+                color: #999;
+            }
+            &:not(.active) {
+                .input {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+p-menu#appLocationSelect {
+    padding-right: 5px;
+    select {
+        background: none;
+        border: none;
+        font-size: small;
+        option {
+            color: #222;
+            font-size: larger;
+        }
+    }
+    @media #{$submenubar_break} {
+        i {
+            display: none;
+        }
+    }
+}

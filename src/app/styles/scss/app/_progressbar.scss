@@ -1,0 +1,34 @@
+﻿@import '../_variables.scss';
+
+//-- progressbar
+.progress {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 100px;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 5px;
+    background: rgba(100,100,100,0.1);
+
+    .bar {
+        background: $color_blue_goggle;
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        transform-origin: left;
+        width: 0;
+        animation: span-x 0.3s cubic-bezier(0.74, 0.03, 0.27, 1.55) forwards;
+        transition: width 0.3s cubic-bezier(0.74, 0.03, 0.27, 1.55);
+    }
+
+    label {
+        z-index: 3;
+        margin: 0 auto;
+        color: rgba(0,0,0,0.7);
+        padding: 3px;
+        position: relative;
+        font-weight: bold;
+    }
+}

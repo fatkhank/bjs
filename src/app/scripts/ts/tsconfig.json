@@ -1,0 +1,92 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": false,
+    "noEmitOnError": false,
+    "noImplicitAny": false,
+    "outFile": "../app.js",
+    "removeComments": false,
+    "sourceMap": true,
+    //    "inlineSourceMap": true,
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ],
+  "files": [
+    /**
+     * PLEASE INCLUDE ALL FILES WITH CORRECT ORDER ACCORDING TO DEPENDENCIES BETWEEN FILES. 
+     * INCORRECT ORDER CAN RESULT COMPILE ERRORS.
+     */
+
+    "framework/base.ts",
+    "framework/utils.ts",
+    "framework/part.ts",
+    "framework/view.ts",
+    "framework/menu.ts",
+    "framework/route.ts",
+
+    //-- START OF authentication module.
+    "framework/auth.ts",
+    //Please comment any of unused auth handlers for performance
+    "framework/auth/jqoauth2.ts",
+    "framework/auth/static_auth.ts",
+    //-- END OF auth module
+
+
+    "framework/ajax.ts",
+    "framework/lang.ts",
+    "framework/langs.ts",
+    "framework/local_cache.ts",
+    "framework/form_mapper.ts",
+    "framework/bootstrap.ts",
+    "framework/print.ts",
+    "framework/accesskey.ts",
+
+    //-- START OF UIs
+    "framework/ui/utils.ts",
+    "framework/ui/card.ts",
+    "framework/ui/checkbox.ts",
+    "framework/ui/dialog.ts",
+    "framework/ui/confirm_dialog.ts",
+    "framework/ui/dropdown.ts",
+    "framework/ui/image.ts",
+    "framework/ui/image_chooser.ts",
+    "framework/ui/inputs.ts",
+    "framework/ui/date.ts",
+    "framework/ui/input_money.ts",
+    "framework/ui/label.ts",
+    "framework/ui/loading.ts",
+    "framework/ui/notif.ts",
+    "framework/ui/progressbar.ts",
+    "framework/ui/ptable.ts",
+    "framework/ui/radio.ts",
+    "framework/ui/select.ts",
+    "framework/ui/switcher.ts",
+    "framework/ui/menus.ts",
+    "framework/ui/rightbar.ts",
+    "framework/ui/task_runner.ts",
+    "framework/ui/tooltip.ts",
+    "framework/ui/tree.ts",
+    "framework/ui/chooser.ts",
+    "framework/ui/content_tab.ts",
+    "framework/ui/crud_view.ts",
+    "framework/ui/crud_card.ts",
+    "framework/ui/crud_list.ts",
+    "framework/ui/upload_excel.ts",
+    //-- END OF UIs
+
+    //-- START OF App Scripts
+    "app/constants.ts",
+    "app/inputs.ts",
+    "app/permissions.ts",
+    "app/langs.ts",
+    "app/caches.ts",
+    "app/parts.ts",
+    "app/choosers.ts",
+    "app/menus.ts",
+    "app/main.ts"
+    //-- END OF App Scripts
+  ]
+}

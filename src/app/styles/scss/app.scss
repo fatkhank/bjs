@@ -1,0 +1,32 @@
+﻿@import '_variables.scss';
+@import 'app/_layout_utils.scss';
+
+/*Components*/
+@import 'app/_animations.scss';
+@import 'app/_card.scss';
+@import 'app/_chooser.scss';
+@import 'app/_components.scss';
+@import 'app/_confirm_dialog.scss';
+@import 'app/_crud_card.scss';
+@import 'app/_crud_tab.scss';
+@import 'app/_dialog.scss';
+@import 'app/_form.scss';
+@import 'app/_form_elms.scss';
+@import 'app/_image_chooser.scss';
+@import 'app/_info.scss';
+@import 'app/_label.scss';
+@import 'app/_loading.scss';
+@import 'app/_notification.scss';
+@import 'app/_plain_view.scss';
+@import 'app/_process.scss';
+@import 'app/_progressbar.scss';
+@import 'app/_table.scss';
+@import 'app/_task_runner.scss';
+@import 'app/_tree.scss';
+@import 'app/_upload_excel.scss';
+
+/*  pages  */
+@import '_index.scss';
+
+/* app */
+@import 'wms/_inputs.scss';

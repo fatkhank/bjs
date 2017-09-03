@@ -1,0 +1,44 @@
+﻿@import '../_variables.scss';
+
+$process_arrow_size : 50px;
+.process-summary {
+    font-size: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    >div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        color: #aaa;
+        overflow: hidden;
+        position: relative;
+        padding-right: 30px;
+
+        &.done {
+            color: #8A2A86;
+        }
+
+        &:hover:not(.done){
+            color: $color_text;
+        }
+
+        &:not(:last-child)::before{
+            display: block;
+            content: '';
+            border-right: 1px solid;
+            border-top: 1px solid;
+            transform: rotate(45deg);
+            width: $process_arrow_size;
+            height: $process_arrow_size;
+            position: absolute;
+            right: 20px;
+        }
+    }
+    b {
+        font-size: 18px;
+        padding-left: 5px;
+    }
+}

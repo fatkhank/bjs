@@ -1,0 +1,75 @@
+﻿@import '../_variables.scss';
+//----- dialogs
+//Z index
+#appDialogs {
+    z-index: $zxAppDialog;
+}
+
+p-dialog {
+    @include fix-container(0);
+    background: rgba(50, 50, 50, 0.4);
+    display: none;
+    padding: 15px;
+    &.full {
+        p-content {
+            width: 100%;
+        }
+    }
+    &.top {
+        p-content {
+            margin-top: 0;
+        }
+    } //    animation:fadeout 0.2s linear forwards;
+    &[is-active] {
+        display: flex;
+        z-index: $zxActiveDialogs; //        animation:fadein 0.2s linear forwards;
+    }
+    >p-content {
+        background: white;
+        margin: auto;
+        padding: 15px;
+        min-width: 200px;
+        border: 1px solid $color_grey_med;
+        position: relative;
+        animation: span ease-out 300ms;
+        display:flex;
+        flex-direction: column;
+        >p-head {
+            margin-bottom: $default_spacing;
+            h4 {
+                margin: 0;
+                border-bottom: 1px solid #ccc;
+                color: $color_primary;
+                padding-bottom: $default_spacing/2;
+                font-weight: bold;
+            }
+        }
+        >p-body {
+            line-height: $line_height_roomy;
+            display: block;
+            &:not(.overflow) {
+                overflow: auto;
+            }
+        }
+        >p-foot {
+            margin-top: $default_spacing;
+            margin-bottom: -$default_spacing;
+            button {
+                min-width: 100px;
+            }
+            &.actions {
+                margin-bottom: -10px !important;
+            }
+        }
+    }
+}
+
+.confirm-dialog {
+    p-content {
+        max-width: 300px;
+        text-align: center;
+    }
+    .confirm-msg {
+        font-weight: normal;
+    }
+}

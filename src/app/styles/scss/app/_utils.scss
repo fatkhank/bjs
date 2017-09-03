@@ -1,0 +1,44 @@
+﻿@import '../_variables.scss';
+
+$card_border_color: rgba(0,0,0,0.1);
+
+//--- styiling
+.txt-orange {
+    color: $color_yellow;
+}
+
+.txt-red {
+    color: $color_red_goggle;
+}
+
+.txt-blue {
+    color: $color_blue_goggle;
+}
+
+.txt-green {
+    color: $color_green_goggle;
+}
+
+.bg-orange {
+    background: $color_yellow;
+}
+
+.bg-red {
+    background: $color_red_goggle;
+}
+
+.bg-blue {
+    background: $color_blue_goggle;
+}
+
+.bg-green {
+    background: $color_green_goggle;
+}
+
+.color-prim{
+    color:$color_primary;
+}
+
+.color-second{
+    color:$color_secondary;
+}

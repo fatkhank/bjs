@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{20D119C9-9C5B-4D36-AD68-426746E9EB22}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="libs\bundle.js" />
+    <Content Include="libs\bundle.min.js">
+      <DependentUpon>bundle.js</DependentUpon>
+    </Content>
+    <Content Include="fonts\bundle.css" />
+    <Content Include="fonts\bundle.min.css">
+      <DependentUpon>bundle.css</DependentUpon>
+    </Content>
+    <Content Include="fonts\font-awesome.css" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\roboto\latin-400.woff2" />
+    <Content Include="fonts\roboto\latin-400i.woff2" />
+    <Content Include="fonts\roboto\latin-700.woff2" />
+    <Content Include="fonts\roboto\latin-700i.woff2" />
+    <Content Include="fonts\roboto\latin_ext-400.woff2" />
+    <Content Include="fonts\roboto\latin_ext-400i.woff2" />
+    <Content Include="fonts\roboto\latin_ext-700.woff2" />
+    <Content Include="fonts\roboto\latin_ext-700i.woff2" />
+    <Content Include="bundleconfig.json.bindings">
+      <DependentUpon>bundleconfig.json</DependentUpon>
+    </Content>
+    <Content Include="img\wms_logo_192.png" />
+    <Content Include="index.min.html">
+      <DependentUpon>index.html</DependentUpon>
+    </Content>
+    <Content Include="libs\Chart.bundle.min.js" />
+    <Content Include="parts\css\sale_process.css" />
+    <Content Include="parts\html\dashboard_stock.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\dashboard_category.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\charts.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="parts\scss\test.scss" />
+    <Content Include="parts\html\sample.html" />
+    <Content Include="parts\html\supplier\my_po.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="parts\js\admin\adm_users.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\admin\app_config.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\batches.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\breakage.js" />
+    <Content Include="parts\js\charts.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\dashboard_category.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\dashboard_stock.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\inbound_qc.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\loss.js" />
+    <Content Include="parts\js\loss_add.js" />
+    <Content Include="parts\js\manufacturing_bast.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\manufacturing_order.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\manufacturing_request.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\manufacturing_stock.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\md_currency.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\md_location.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\mutasi.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\postal_service.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\purchase_order.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\purchase_receive.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\receive.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\ref_data.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\sale_order.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\sale_process.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\sale_return.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\sample.js" />
+    <Content Include="parts\js\stock_adjustment.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\stock_items.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\stock_item_browser.js" />
+    <Content Include="parts\js\stock_opname.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\stock_serials.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\suppliers.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\supplier\my_po.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\supplier_return.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\js\transfer.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scripts\app.js" />
+    <Content Include="scripts\ts\wms\caches.ts" />
+    <Content Include="scripts\ts\wms\choosers.ts" />
+    <Content Include="scripts\ts\wms\constants.ts" />
+    <Content Include="scripts\ts\wms\main.ts" />
+    <Content Include="scripts\ts\wms\langs.ts" />
+    <TypeScriptCompile Include="parts\ts\sample.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\chooser.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\card.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\date.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\checkbox.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\select.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\input_money.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\inputs.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\image.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\progressbar.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\notif.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\tooltip.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\tree.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\dropdown.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\confirm_dialog.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\label.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\loading.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\utils.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\content_tab.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\crud_card.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\crud_list.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\crud_tab.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\dialog.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\radio.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\image_chooser.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\ptable.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\switcher.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ui\upload_excel.ts" />
+    <TypeScriptCompile Include="scripts\ts\wms\menus.ts" />
+    <TypeScriptCompile Include="scripts\ts\wms\parts.ts" />
+    <TypeScriptCompile Include="scripts\ts\wms\permissions.ts" />
+    <Content Include="libs\bundle.min.js.map">
+      <DependentUpon>bundle.min.js</DependentUpon>
+    </Content>
+    <Content Include="scripts\ts\tsconfig.json" />
+    <Content Include="parts\ts\tsconfig.json" />
+    <None Include="scripts\_references.js" />
+    <Content Include="fonts\font-awesome.min.css" />
+    <Content Include="fonts\roboto.css" />
+    <Content Include="fonts\roboto.min.css">
+      <DependentUpon>roboto.css</DependentUpon>
+    </Content>
+    <Content Include="img\no_img.png" />
+    <Content Include="libs\bundle.css" />
+    <Content Include="libs\bundle.min.css">
+      <DependentUpon>bundle.css</DependentUpon>
+    </Content>
+    <Content Include="libs\dropzone.js" />
+    <Content Include="libs\dropzone.min.js">
+      <DependentUpon>dropzone.js</DependentUpon>
+    </Content>
+    <Content Include="libs\jquery.hotkeys.js" />
+    <Content Include="libs\jquery.hotkeys.min.js">
+      <DependentUpon>jquery.hotkeys.js</DependentUpon>
+    </Content>
+    <Content Include="parts\html\manufacturing_request.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\receive.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\stock_serials.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\breakage.html" />
+    <Content Include="parts\html\loss.html" />
+    <Content Include="parts\html\admin\app_config.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\mutasi.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\loss_add.html" />
+    <Content Include="parts\html\stock_adjustment.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\transfer.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\supplier_return.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\stock_opname.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\ref_data.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\sale_return.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\stock_item_browser.html" />
+    <Content Include="libs\pikaday.css" />
+    <Content Include="libs\pikaday.js" />
+    <Content Include="libs\pikaday.min.css">
+      <DependentUpon>pikaday.css</DependentUpon>
+    </Content>
+    <Content Include="libs\pikaday.min.js">
+      <DependentUpon>pikaday.js</DependentUpon>
+    </Content>
+    <Content Include="libs\spinkit.css" />
+    <Content Include="img\avatar_default.png" />
+    <Content Include="styles\app.css" />
+    <Content Include="styles\app.min.css">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
+    <Content Include="styles\scss\app\_card.scss" />
+    <Content Include="parts\html\sale_process.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\sale_order.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\manufacturing_order.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\manufacturing_stock.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\manufacturing_bast.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\inbound_qc.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\purchase_receive.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\pikaday.min.js.map">
+      <DependentUpon>pikaday.min.js</DependentUpon>
+    </Content>
+    <None Include="bundleconfig.json" />
+    <Content Include="libs\bootstrap_custom.min.css" />
+    <Content Include="libs\jquery-2.1.1-custom-build.min.js" />
+    <Content Include="libs\jquery.oauth-custom.js" />
+    <Content Include="libs\normalize.css" />
+    <Content Include="parts\html\admin\adm_users.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\batches.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\md_location.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\md_currency.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\postal_service.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\purchase_order.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parts\html\suppliers.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="libs\awesomplete.css" />
+    <Content Include="libs\awesomplete.js" />
+    <Content Include="libs\awesomplete.min.js" />
+    <Content Include="libs\bootstrap.css" />
+    <Content Include="libs\bootstrap.min.css" />
+    <Content Include="libs\jquery.oauth.js" />
+    <Content Include="libs\jquery.oauth.min.js" />
+    <Content Include="libs\moment-with-locales.js" />
+    <Content Include="libs\moment-with-locales.min.js" />
+    <Content Include="libs\moment.js" />
+    <Content Include="libs\moment.min.js" />
+    <Content Include="libs\store.min.js" />
+    <Content Include="parts\html\stock_items.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="styles\scss\app.scss" />
+    <Content Include="styles\scss\_index.scss" />
+    <Content Include="styles\scss\app\_animations.scss" />
+    <Content Include="styles\scss\app\_components.scss" />
+    <Content Include="styles\scss\app\_crud_card.scss" />
+    <Content Include="styles\scss\app\_crud_tab.scss" />
+    <Content Include="styles\scss\app\_dialog.scss" />
+    <Content Include="styles\scss\app\_form.scss" />
+    <Content Include="styles\scss\app\_form_elms.scss" />
+    <Content Include="styles\scss\app\_image_chooser.scss" />
+    <Content Include="styles\scss\app\_layout_utils.scss" />
+    <Content Include="styles\scss\app\_notification.scss" />
+    <Content Include="styles\scss\app\_progressbar.scss" />
+    <Content Include="styles\scss\app\_table.scss" />
+    <Content Include="styles\scss\app\_upload_excel.scss" />
+    <Content Include="styles\scss\_variables.scss" />
+    <Content Include="styles\scss\app\_utils.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libs\bootstrap.css.map" />
+    <Content Include="libs\bootstrap.min.css.map" />
+    <Content Include="libs\moment-with-locales.min.js.map" />
+    <Content Include="libs\moment.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\sample\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="scripts\ts\framework\accesskey.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\ajax.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\auth.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\base.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\bootstrap.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\form_mapper.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\lang.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\langs.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\local_cache.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\print.ts" />
+    <TypeScriptCompile Include="scripts\ts\framework\route.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ts_test</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>44396</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44396/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

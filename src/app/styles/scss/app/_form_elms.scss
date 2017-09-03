@@ -1,0 +1,442 @@
+﻿@import '../_variables.scss';
+$input_height: 30px;
+$input_height_small: 20px;
+$color_input_line: $color_secondary;
+.validate {
+    @mixin input-style($height: $input_height) {
+        &:invalid, &.invalid {
+            background: rgba($color_red_dark, 0.3);
+            &:not(.disabled) {
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}
+
+@mixin input-style($height: $input_height) {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: $height;
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom-color: $color_input_line;
+    &[disabled],
+    &.disabled {
+        @include input-style-disabled();
+    }
+    &:invalid,
+    &.invalid {
+        background: rgba($color_red_dark, 0.3);
+        &:not(.disabled) {
+            border-bottom-color: transparent;
+        }
+    }
+    &[required],
+    &.required {
+        &:not(.disabled):not([disabled]) {
+            border-bottom-color: $color_blue_goggle;
+        }
+    }
+    &:focus {
+        border-bottom-color: transparent;
+    }
+    &.block {
+        background: rgba(0, 0, 0, 0.04);
+        border-bottom: transparent;
+    }
+}
+
+@mixin input-style-disabled() {
+    border-bottom-color: $color_disabled!important;
+}
+
+@mixin input-icon($height: $input_height) {
+    position: absolute;
+    right: 8px;
+    top: $height/2;
+    transform: translateY(-50%);
+    font-size: smaller !important;
+}
+
+//---money
+.money {
+    white-space: nowrap;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
+    flex-wrap: wrap;
+    .symbol {
+        padding-right: $default_spacing;
+        white-space: nowrap;
+    }
+    .amount {
+        text-align: right;
+    }
+}
+
+.input-money {
+    display: inline-flex;
+    width: 100%;
+    align-items: baseline;
+    flex-wrap: wrap;
+    .symbol {
+        white-space: nowrap;
+        &:not(:empty) {
+            padding-right: $default_spacing;
+        }
+    }
+    .val {
+        position: relative;
+        flex-grow: 1;
+        &:hover {
+            input:not(:focus)+.display {
+                overflow: visible;
+                right: unset;
+                bottom: unset;
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                min-height: 100%;
+                z-index: 2;
+                border: 1px solid $color_grey_dark;
+                padding: 4px 4px 0 0;
+            }
+        }
+        input {
+            min-width: 100px;
+            text-align: right;
+            &:not(:focus) {
+                color: transparent;
+            }
+            &:focus {
+                +.display {
+                    //normal
+                    top: 100%;
+                    bottom: unset;
+                    background: #fff;
+                    padding: 5px;
+                    border: 2px solid $color_primary_light;
+                    z-index: 2;
+                    @media #{$submenubar_break} {
+                        //mobile
+                        position: fixed;
+                        top: $appheader_height;
+                        bottom: unset;
+                        left: $default_spacing;
+                        right: $default_spacing;
+                        min-width: unset;
+                        min-height: unset;
+                        z-index: 2;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .display {
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: right;
+        padding: 0 5px;
+    }
+}
+
+//--- input
+.input-text {
+    @include input-style(unset);
+    min-height: $input_height;
+    line-height: $line_height_roomy;
+    &[contenteditable=false] {
+        @include input-style-disabled;
+    }
+}
+
+//--- input
+.input-whole {
+    min-width: 60px;
+    max-width: 80px;
+    input {
+        text-align: right;
+        width: 100%;
+    }
+}
+
+//--- datepicker
+p-datepicker {
+    position: relative;
+    display: block;
+    max-height: $size_finger_friendly;
+    .input {
+        width: 100% !important;
+    }
+    >i {
+        @include input-icon;
+    }
+    >div {
+        z-index: 10;
+        position: absolute;
+    }
+}
+
+//--- pikaday datepicker
+.pika-single {
+    border-color: $color_grey_dark !important;
+    .pika-button {
+        border-radius: 0 !important;
+    }
+    &.is-bound {
+        box-shadow: none !important;
+    }
+    .is-today .pika-button {
+        color: white;
+        background: $color_primary;
+        font-weight: bold;
+    }
+    .is-selected .pika-button {
+        color: #999;
+        font-weight: bold;
+        background: none;
+        box-shadow: inset 0 0 0 3px $color_secondary;
+        border-radius: 0;
+    }
+    .pika-button:hover {
+        background: $color_secondary_light;
+        box-shadow: none;
+    }
+    @media #{$submenubar_break} {
+        align-items: center;
+        .pika-lendar {
+            position: fixed;
+            left: 10%;
+            right: 10%;
+            bottom: 10px;
+            width: unset;
+            min-height: 280px;
+            z-index: 10;
+            background: white;
+            padding: $default_spacing;
+            border: 2px solid $color_primary;
+            margin: auto;
+            button {
+                min-width: $size_finger_friendly;
+                min-height: $size_finger_friendly;
+                text-align: center;
+            }
+            .pika-next,
+            .pika-prev {
+                color: transparent;
+            }
+        }
+    }
+}
+
+//--- checkbox
+.i-check {
+    display: inline-block;
+    button {
+        width: $input_height;
+        height: $input_height;
+        border: 1px solid $color_input_line;
+        position: relative;
+        display: block;
+        background: transparent;
+        color: transparent;
+        font-size: 18px;
+        padding: 0;
+        margin: auto;
+        &.checked {
+            background: $color_input_line;
+            color: #fff;
+        }
+        &[disabled] {
+            border-color: $color_disabled;
+            &.checked {
+                background-color: $color_disabled;
+            }
+        }
+    }
+    &.small {
+        button {
+            width: $input_height_small;
+            height: $input_height_small;
+            font-size: 14px;
+        }
+    }
+    ~label {
+        padding-left: 5px;
+    }
+}
+
+//--- radio
+.i-radio {
+    button {
+        width: $input_height;
+        height: $input_height;
+        border: 1px solid $color_input_line;
+        position: relative;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        background: transparent;
+        float: left;
+        &.checked::after {
+            display: block;
+            content: '';
+            width: 0.76*$input_height;
+            height: 0.76*$input_height;
+            background: $color_input_line;
+            border-radius: 50px;
+            flex-shrink: 0;
+        }
+        &[disabled] {
+            border-color: $color_disabled;
+            &.checked::after {
+                background: rgba($color_disabled, 0.8);
+            }
+        }
+    }
+    label {
+        padding-right: 10px;
+        padding-left: 5px;
+        padding-top: 5px;
+        float: left;
+        &:empty {
+            display: none;
+        }
+    }
+}
+
+select.input,
+input.input {
+    @include input-style;
+    display: block;
+    text-overflow: ellipsis;
+}
+
+
+/*select.input {
+    border-color: $color_input_line;
+}*/
+
+//--- chooser
+p-chooser {
+    display: flex;
+    width: 100%;
+    &.disabled {
+        input,
+        select,
+        button {
+            background: $color_disabled;
+        }
+    }
+    >button {
+        @include input-style;
+        font-weight: normal;
+        width: 100%;
+        position: relative;
+        padding-right: 25px;
+        span {
+            text-align: left;
+            white-space: nowrap;
+            padding-right: 5px;
+            display: block;
+        }
+        i {
+            @include input-icon;
+        }
+    }
+}
+
+//--- percent
+.input-percent {
+    position: relative;
+    input {
+        text-align: right;
+    }
+    b {
+        position: absolute;
+        right: $default_spacing;
+        top: 3px;
+    }
+}
+
+.p-select {
+    position: relative;
+    &:not(.on):not(.disabled):hover {
+        >*:first-child {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            display: block;
+        }
+    }
+    >button {
+        background: transparent;
+        border: 1px solid transparent;
+        text-align: left;
+        &.input {
+            @include input-style(100%);
+        }
+    }
+    >*:first-child {
+        display: block;
+        &::after {
+            content: '\f0d7';
+            font-family: FontAwesome;
+            margin-left: 5px;
+            float: right;
+        }
+    }
+    >ul {
+        list-style: none;
+        position: absolute;
+        padding-left: 0;
+        z-index: 20;
+        background: white;
+        border: 1px solid #ccc;
+        border-bottom-width: 5px;
+        margin: 0;
+        min-width: 100%;
+        &.empty {
+            content: 'kosong';
+            font-size: small;
+            text-align: center;
+            margin: auto;
+            display: block;
+            margin: 5px;
+            font-style: italic;
+        }
+        &:not(.on) {
+            display: none;
+        }
+        li {
+            width: 100%;
+            min-height: $size_finger_friendly;
+            white-space: nowrap;
+            padding: 5px 10px;
+            padding-left: 30px;
+            display: flex;
+            align-items: center;
+            &.active {
+                padding-left: 0;
+                &:before {
+                    content: '\f00c';
+                    width: 30px;
+                    padding: 0 5px;
+                    font-family: FontAwesome;
+                    color: $color_primary;
+                    display: inline-block;
+                    text-align: center;
+                }
+            }
+            &:hover {
+                background-color: $color_secondary_transparent;
+            }
+        }
+    }
+}

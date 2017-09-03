@@ -1,0 +1,262 @@
+﻿@import '../_variables.scss';
+
+$card_border_color: rgba(0,0,0,0.1);
+
+#appSamples, .sample:not([is-active]) {
+    display: none;
+}
+
+//--- item-list
+ul.item-list {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+        padding: 5px;
+        background-color: white;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #ccc;
+        }
+
+        > img {
+            max-height: 80px;
+        }
+    }
+}
+
+p-tab {
+    p-head {
+        display: inline-flex;
+        position: relative;
+        z-index: 10;
+        margin-bottom: -1mm;
+
+        button {
+            background: none;
+            border: none;
+            padding: 5px $default_spacing;
+            height: $size_finger_friendly;
+            font-weight: bold;
+            /*&:not(:last-child) {
+                border-right: 1px solid $card_border_color;
+            }*/
+            &:not(:first-child) {
+                border-left: 1px solid $card_border_color;
+            }
+
+            &[is-active] {
+                background: white;
+                color: $color_primary;
+                padding-bottom: 3px;
+                margin-bottom: 3px;
+                border: 1px solid $card_border_color;
+                border-bottom: none;
+
+                + button {
+                    border-left: 0;
+                }
+            }
+        }
+    }
+
+    p-body {
+        > div {
+            &:not([is-active]) {
+                display: none !important;
+            }
+        }
+    }
+
+    &.expand {
+        p-head {
+            width: 100%;
+
+            > [tab] {
+                width: 100%;
+                display: inline-flex;
+            }
+
+            button {
+                flex-grow: 1;
+                max-width: 200px;
+            }
+        }
+    }
+}
+
+//--- numbering
+.numbering-reset {
+    counter-reset: numb;
+
+    .numbering::before {
+        content: counter(numb);
+        counter-increment: numb;
+    }
+}
+
+//--- styiling
+.txt-orange {
+    color: $color_yellow;
+}
+
+.txt-red {
+    color: $color_red_goggle;
+}
+
+.txt-blue {
+    color: $color_blue_goggle;
+}
+
+.txt-green {
+    color: $color_green_goggle;
+}
+
+.bg-orange {
+    background: $color_yellow;
+}
+
+.bg-red {
+    background: $color_red_goggle;
+}
+
+.bg-blue {
+    background: $color_blue_goggle;
+}
+
+.bg-green {
+    background: $color_green_goggle;
+}
+
+//--- dropdown
+.dropdown {
+    position: relative;
+    /*>button::after{
+        content:'v';
+        border-left:3px;
+        font-size:x-small;
+        margin-left:4px;
+    }*/
+    ul {
+        position: absolute;
+        z-index: 30;
+        list-style: none;
+        padding-left: 0;
+        background: white;
+        border: 1px solid #eee;
+        margin: 0;
+        min-width: 100%;
+
+        &:not(.on) {
+            display: none;
+        }
+
+        li {
+            button {
+                width: 100%;
+                text-align: left;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+//---- action bar
+.actions {
+    &:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    &:not(.p-row) {
+        button:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}
+
+//--- icon in button
+p-menu, button[btn], a[btn] {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: $color_btn_hover;
+    }
+
+    i:not(:only-child) {
+        float: left;
+    }
+
+    > b {
+        white-space: nowrap;
+        float: left;
+
+        &:not(:only-child) {
+            padding-left: 5px;
+            float: left;
+        }
+    }
+}
+
+//--- button style
+button[btn], a[btn] {
+    @include button-text;
+    min-width: 80px;
+    padding: 0 5px;
+
+    &[disabled] {
+        color: $color_disabled;
+    }
+
+    &.block {
+        @include button-block;
+
+        &:hover {
+            background: $color_secondary;
+        }
+
+        &[disabled] {
+            background: $color_disabled;
+        }
+    }
+}
+
+.list-card {
+    .body {
+        .actions {
+            justify-content: center;
+
+            [btn] {
+            }
+        }
+    }
+}
+
+//comma separated
+.comma-sep > *:not(:last-child)::after {
+    content: ',';
+    font-weight: bold;
+    color: $color_primary_light;
+}
+
+.stripify {
+    > *:nth-child(2n+1) {
+        background-color: rgba(250,250,250,0.5);
+    }
+
+    > *:nth-child(2n) {
+        background-color: rgba(0,0,0,0.05);
+    }
+}
+
+//--- outline
+*:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px rgba($color_secondary_light, 0.8);
+    //    border-color: transparent !important;
+}

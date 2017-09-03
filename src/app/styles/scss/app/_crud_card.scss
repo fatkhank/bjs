@@ -1,0 +1,43 @@
+﻿@import '../_variables.scss';
+
+//crud card
+.crud-card {
+    .actions {
+        display: flex;
+
+        [btn] {
+            min-width: $size_finger_friendly;
+            margin-right: 0 !important;
+        }
+    }
+
+    .body {
+        .actions {
+            justify-content: center;
+
+            .input {
+                width: unset;
+            }
+
+            input {
+                margin-right: 5px;
+            }
+
+            [btn=prev] {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .v-paging {
+        padding-top: $default_spacing;
+        text-align: center;
+    }
+
+    &.collapse{
+        .v-paging{
+            padding-top: 0;
+            padding-bottom: $default_spacing;
+        }
+    }
+}

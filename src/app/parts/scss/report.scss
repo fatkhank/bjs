@@ -1,0 +1,52 @@
+@import '_variables.scss';
+.viewReport {
+    >.report-groups {
+        >.report-group {
+            margin-bottom: $default_spacing;
+            header {
+                color: $color_primary_light;
+                border-bottom: 1px solid $color_grey_dark;
+                margin: $default_spacing 0;
+            }
+        }
+    }
+    .templates {
+        display: flex;
+        flex-wrap: wrap;
+        .template {
+            background: #fff;
+            border: 1px solid $card_border_color;
+            padding: $default_spacing;
+            margin-right: $default_spacing;
+            margin-bottom: $default_spacing;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            color: $color_secondary_dark;
+            min-width: 250px;
+
+            &:hover{
+                background: $color_secondary_transparent;
+            }
+
+            .icon {
+                font-size: 30px;
+            }
+            .desc {
+                padding-left: 5px;
+                label {
+                    float: left;
+                    width: 100%;
+                    cursor: pointer;
+                }
+            }
+            .title{
+                font-weight: bold;
+            }
+            .subtitle {
+                font-size: 10px;
+                margin-top: 5px;
+            }
+        }
+    }
+}

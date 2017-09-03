@@ -1,0 +1,57 @@
+﻿@import '../_variables.scss';
+
+.img-chooser-dialog {
+    .dropzone {
+        //        background: rgba(0,0,0,0.05);
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 400px;
+        min-height: 200px;
+
+        @media #{$submenubar_break}{
+            min-width: unset;
+        }
+
+        .dz-message {
+            order: 99;
+            background: rgba(0,0,0,0.05);
+            margin: $default_spacing;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 300px;
+            min-height: 50px;
+            text-align: center;
+
+            &:only-child {
+                margin: 0;
+            }
+        }
+
+        .dz-details, .dz-image-preview {
+            width: 130px;
+            padding: $default_spacing;
+
+            &.selected {
+                border: 3px solid $color_primary_light;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .dz-filename {
+                font-size: smaller;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-height: 40px;
+                background: $color_primary_light;
+                color: #fff;
+                padding: 3px;
+            }
+        }
+    }
+
+    
+}

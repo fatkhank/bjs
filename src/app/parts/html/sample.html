@@ -1,0 +1,239 @@
+﻿<crud-tab class="absolute-container">
+    <p-head>
+        <div crud-role="heads_list" class="filter-shown">
+            <p-menu crud-list="all"><b><p-t>all</p-t></b></p-menu>
+        </div>
+        <div crud-role="heads_detail">
+            <p-menu class="sample"><b></b></p-menu>
+        </div>
+        <div crud-role="heads_action">
+            <button btn="create"><i class="fa fa-pencil"></i><b><p-t>new</p-t></b></button>
+        </div>
+    </p-head>
+    <p-body>
+        <p-content class="sample p-col spaced" crud-view="list">
+            <div class="card actions">
+                <div class="form-inline">
+                    <label crud-role="filter_by"></label>
+                    <input crud-role="filter_text" />
+                    <button btn="filter"><i class="fa fa-search"></i></button>
+                </div>
+                <div crud-part="list_nav"></div>
+            </div>
+            <div class="card">
+                <p-table>
+                    <p-head>
+                        <p-r>
+                            <p-c><p-t>name</p-t></p-c>
+                            <p-c><p-t>email</p-t></p-c>
+                        </p-r>
+                    </p-head>
+                    <p-body crud-role="rows">
+                        <p-r class="crud-row sample">
+                            <p-c class="v-username"></p-c>
+                            <p-c class="v-email"></p-c>
+                        </p-r>
+                    </p-body>
+                </p-table>
+            </div>
+            <div crud-role="list_status"></div>
+        </p-content>
+        <p-content crud-view="detail">
+            <p-row class="action-bar">
+                <p-body>
+                    <button btn="save"><i class="fa fa-save"></i><b><p-t>save</p-t></b></button>
+                    <button btn="remove"><i class="fa fa-trash"></i><b><p-t key="delete" /></b></button>
+                </p-body>
+                <p-right>
+                    <button btn="tab_reload"><i class="fa fa-refresh"></i></button>
+                    <button btn="tab_close"><i class="fa fa-close"></i></button>
+                </p-right>
+            </p-row>
+            <p-body class="">
+                <div class="card-deck spaced">
+                    <div>
+                        <div class="card" data-grow="2">
+                            <h4 class="title"><p-t key="profile" /></h4>
+                            <div class="body">
+                                <div class="form-default striped" pform-label="100px">
+                                    <div class="group">
+                                        <label><p-t>name</p-t></label>
+                                        <div class="inputs">
+                                            <input class="input v-username" maxlength="40" />
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                        <label><p-t>email</p-t></label>
+                                        <div class="inputs">
+                                            <input class="input v-email" maxlength="30" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card crud-card">
+                            <h4 class="title"><p-t>permissions</p-t></h4>
+                            <div class="body form-default striped">
+                                <p-table class="compact">
+                                    <p-body class="r-permissions">
+                                        <p-r class="r-permission sample">
+                                            <p-c class="c-btn"><input class="v-yes" /></p-c>
+                                            <p-c class="v-name c-grow"></p-c>
+                                            <p-c class="v-desc c-grow"></p-c>
+                                        </p-r>
+                                    </p-body>
+                                </p-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p-body>
+        </p-content>
+    </p-body>
+</crud-tab>
+
+<script>
+    /// <reference path="../../js/app.js" />
+
+    (function (app) {
+        var part = app.parts.mdUsers
+            , RESOURCE_URL = 'users'
+            , allPermissions
+        ;
+        part.onload = function (holderElm) {
+            var permRowSample = app.grabSample(holderElm, '.r-permission');
+
+            part.initView = function (view, initParam) {
+                /// <param name="view" type="AppView" />
+                //--- init tab
+                var crudTab = app.ui.crudTab(view.elm);
+
+                var tabList = crudTab.list;
+                tabList.fetch = function (param) {
+                    return app.get(app.apiUrl(RESOURCE_URL), param);
+                };
+                tabList.fillRow = function (row, data) {
+                    app.s(row, '.v-email').innerHTML = data.email || '';
+                    app.s(row, '.v-username').innerHTML = data.name || '';
+
+                    return data.name;
+                };
+
+                tabList.setFilters([
+                    { filter: 'name_or_email', label: app.getText('name')+'/'+app.getText('email') },
+                    { filter: 'name', label: app.getText('name') },
+                    { filter: 'email', label: app.getText('email') }
+                ]);
+
+                var detailForm = app.mapper(function (tabElm) {
+                    //read form objects
+                    var obj = {
+                        name: app.ui.input(app.s(tabElm, '.v-username')),
+                        email: app.ui.input(app.s(tabElm, '.v-email')),
+
+                        _skip: {
+                            mapper: {}
+                        }
+                    };
+
+                    //render permissions
+                    var permRowContainer = app.s(tabElm, '.r-permissions');
+                    for (var p = 0; p < allPermissions.length; p++) {
+                        var permission = allPermissions[p];
+                        var rowElm = app.clone(permRowSample);
+
+                        app.s(rowElm, '.v-name').innerHTML = permission.value || '';
+                        app.s(rowElm, '.v-desc').innerHTML = permission.description || '';
+
+                        var input = app.ui.checkbox(app.s(rowElm, '.v-yes'));
+                        obj._skip.mapper[permission.code] = {
+                            input: input,
+                            obj: permission
+                        };
+
+                        permRowContainer.appendChild(rowElm);
+                    }
+
+                    return obj;
+                });
+
+                //--- register modes
+                crudTab.detail.modes.edit = {
+                    init: function (tabElm, param) {
+                        var form = detailForm.get(tabElm);
+                        return app.get(app.apiUrl(RESOURCE_URL + '/' + param.id)).then(function (data) {
+                            detailForm.setData(form, data);
+
+                            for (var i = 0; i < data.permissions.length; i++) {
+                                var permission = data.permissions[i];
+                                var perm = form._skip.mapper[permission];
+                                if (perm) perm.input.val(true);
+                            }
+                        });
+                    },
+                    actions: {
+                        save: function (tabElm, param) {
+                            var form = detailForm.get(tabElm);
+                            var payload = detailForm.getData(form);
+
+                            payload.permissions = [];
+                            for (var p in form._skip.mapper) {
+                                var perm = form._skip.mapper[p];
+                                if (perm.input.val()) payload.permissions.push(perm.obj.code);
+                            }
+
+                            return app.put(app.apiUrl(RESOURCE_URL + '/' + param.id), payload).then(function (data) {
+                                tabList.reload();
+                                return data;
+                            });
+                        },
+                        remove: {
+                            confirm: function (tabElm) {
+                                var form = detailForm.get(tabElm);
+                                return app.getText('delete_x', '', ' ' + form.email.val());
+                            },
+                            func: function (tabElm, param) {
+                                return app.delete(app.apiUrl(RESOURCE_URL + '/' + param.id)).then(function () {
+                                    tabList.reload();
+                                });
+                            }
+                        }
+                    }
+                };
+                crudTab.detail.modes.create = {
+                    onsave: function (tabElm, param) {
+                        var form = detailForm.get(tabElm);
+                        var payload = detailForm.getData(form);
+
+                        payload.permissions = [];
+                        for (var p in form._skip.mapper) {
+                            var perm = form._skip.mapper[p];
+                            if (perm.input.val()) payload.permissions.push(perm.obj.code);
+                        }
+
+                        return app.post(app.apiUrl(RESOURCE_URL), payload).then(function (data) {
+                            tabList.reload();
+                            return data;
+                        });
+                    },
+                    title: function (tabElm) {
+                        var form = detailForm.get(tabElm);
+                        return form.name.val() || app.getText('new');
+                    }
+                };
+
+                //--- init
+                view.onFirstShow = function () {
+                    //get permissions
+                    app.get(app.apiUrl('ref_data/PERMISSION'), { count: 9999, sortby: 'value_asc' }).then(function (data) {
+                        allPermissions = data.data || [];
+                    });
+
+                    crudTab.activate();
+                };
+            };
+        };
+    })(app);
+</script>

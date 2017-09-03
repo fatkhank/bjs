@@ -1,0 +1,117 @@
+﻿// $color_primary: #8A2A86;
+// $color_primary_light: #a32d9e;
+// $color_primary_dark: #751d71;
+// $color_primary: #d32128;
+// $color_primary_light: #faaa24;
+// $color_primary_dark: #751d71;
+$color_primary_light: #3a96d6 !default;
+$color_primary: #2b5797 !default;
+$color_primary_dark: #1A237E !default;
+// $color_secondary_dark: #0b4f41 !default;
+// $color_secondary_normal:#0b4f41 !default;
+// $color_secondary_medium: #0c6150 !default;
+// $color_secondary_light: #10725f !default;
+$color_secondary: #0F9D58; // #1C9E50;
+$color_secondary_light: #8BC34A; // #12c158;
+$color_secondary_dark: #18743d;
+$color_secondary_transparent: rgba(139, 195, 74, 0.33);
+$color_border_input: #ccc;
+$color_grey_med: #eee;
+$color_grey_dark: #ddd;
+$color_green: #4caf50;
+$color_green_dark:#388E3C;
+$color_red: #d32f2f;
+$color_red_dark:#b71c1c;
+$color_blue: #2196F3;
+$color_blue_dark: #1976D2;
+$color_green_goggle: #3cba54;
+$color_red_goggle: #db3236;
+$color_yellow: #f4c20d;
+$color_blue_goggle: #4885ed;
+$color_text: #444444;
+$color_disabled: rgba(168, 168, 168, 0.3);
+//todo move me
+$card_border_color: rgba(0, 0, 0, 0.1);
+$color_btn_hover:rgba(0, 0, 0, 0.1);
+$appheader_color: $color_primary;
+$mainmenu_height: 12mm;
+$appheader_title_height:7mm;
+$appheader_height: $mainmenu_height+$appheader_title_height;
+$appfooter_height: 30px;
+$submenubar_break:'(max-width:800px)';
+$default_spacing: 10px;
+$line_height_roomy: 1.4;
+$size_finger_friendly: 10mm;
+//-------------------- Z INDEXES -------------
+$zxAppHeader:90;
+$zxAppDialog:200;
+$zxActiveDialogs:70;
+$zxLoading:20;
+$zxRightbar:$zxLoading+2; //above loading
+$zxAppLoaderCover:$zxAppDialog+2;
+$zxNotifications:$zxAppLoaderCover+2; //must above apploadcover
+//--------------- MIXINS -----------------
+@mixin fix-container($top) {
+    position: fixed;
+    top: $top;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+@mixin absolute-container($top: 0, $bottom: 0) {
+    position: absolute;
+    top: $top;
+    left: 0;
+    right: 0;
+    bottom: $bottom;
+    overflow: auto;
+}
+
+@mixin bar-above($color, $width: 3px) {
+    &:before {
+        content: '';
+        display: block;
+        border-top: $width solid $color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+@mixin bar-bellow($color, $width: 3px) {
+    &:before {
+        content: '';
+        display: block;
+        border-bottom: $width solid $color;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+@mixin button-text {
+    background: none;
+    border: none;
+    min-width: $size_finger_friendly;
+    min-height: 8mm;
+    color: $color_secondary_dark;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@mixin button-block {
+    background: $color_secondary_dark;
+    border: none;
+    border-radius: 0;
+    min-width: $size_finger_friendly;
+    min-height: 8mm;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+$pbody_bgcolor: $color_grey_med;

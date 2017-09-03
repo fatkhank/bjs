@@ -1,0 +1,16 @@
+@import '../_variables.scss';
+
+p-view{
+    float: left;
+    padding: $default_spacing;
+    width:100%;
+
+    &>section{
+        &>h3{
+            color:$color_primary;
+        }
+        &>.body{
+
+        }
+    }
+}

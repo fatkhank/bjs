@@ -1,0 +1,48 @@
+@import '../_variables.scss';
+
+//chooser
+.chooser-dialog {
+    p-body {
+        .actions {
+            .ch-search {
+                width: 100%;
+            }
+
+            [btn] {
+                min-width: $size_finger_friendly;
+            }
+        }
+
+        .ch-item {
+            &.ch-ek {
+                > p-c:first-child {
+                    border-left: 4px solid $color_primary;
+                }
+
+                > p-c {
+                    background-color: rgba($color_primary, 0.3);
+                }
+            }
+        }
+    }
+
+    p-foot {
+        p-body {
+            align-items: center;
+            justify-content: center;
+
+            .ch-status {
+                white-space: nowrap;
+                min-width: 100px;
+                padding: 10px;
+
+                b {
+                }
+
+                .ch-count::before {
+                    content: '/';
+                }
+            }
+        }
+    }
+}

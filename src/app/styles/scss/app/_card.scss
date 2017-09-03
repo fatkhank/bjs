@@ -1,0 +1,162 @@
+﻿@import '../_variables.scss';
+$card_border_color: rgba(0,0,0,0.1);
+
+//--- card
+.card {
+    background: #fff;
+    padding: $default_spacing;
+    border: 1px solid $card_border_color;
+    position: relative;
+
+    > .head > .title, > .title {
+        margin-top: 0;
+        font-weight: bold;
+        color: $color_primary;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: $default_spacing;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    > .title::after {
+        content: '\f0d8';
+        display: block;
+        font-family: FontAwesome;
+        float: right;
+    }
+
+    > .head {
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        margin-bottom: $default_spacing;
+
+        > .title {
+            border-bottom: none;
+            margin: 0;
+            flex-grow: 1;
+
+            &::before {
+                content: '\f0d8';
+                display: block;
+                font-family: FontAwesome;
+                float: left;
+                padding-right: 5px;
+            }
+        }
+
+        > .actions {
+            float: right;
+            margin-top: -10px;
+
+            button {
+                width: $size_finger_friendly;
+                margin: 0;
+                justify-content: center;
+                align-items: center;
+
+                i {
+                    margin: 0;
+                }
+            }
+
+            [btn]{
+                min-width:$size_finger_friendly;
+            }
+
+            [btn=enlarge]::after {
+                content: '\f065';
+                display: block;
+                font-family: 'FontAwesome';
+            }
+        }
+    }
+
+    > .body {
+        overflow: auto;
+        position: relative;
+        transition: height 300ms;
+
+        &.overflow {
+            overflow: visible;
+        }
+
+        .actions {
+            text-align: center;
+        }
+    }
+
+    &.collapse {
+        overflow: hidden !important;
+        padding-bottom: 0;
+
+        > .head > .title::before, > .title::after {
+            content: '\f0d7';
+        }
+    }
+    //--
+    &.enlarge {
+        position: fixed;
+        bottom:$default_spacing;
+        z-index:($zxAppDialog+10);
+        transition:all 300ms;
+
+        .head > .actions [btn=enlarge]::after {
+            content: '\f066';
+        }
+
+        >.body{
+            overflow:auto;
+            max-height:80%;
+        }
+    }
+    //--- themes
+    &.orange, &.red, &.blue, &.green {
+        border-top: 0;
+        border-bottom: 0;
+        border-left-width: 10px;
+        border-right-width: 10px;
+    }
+
+    &.orange {
+        border-color: $color_yellow;
+    }
+
+    &.red {
+        border-color: $color_red;
+    }
+
+    &.blue {
+        border-color: $color_blue;
+    }
+
+    &.green {
+        border-color: $color_green;
+    }
+}
+
+.card-deck {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    &.spaced {
+        margin-right: -$default_spacing;
+
+        > div {
+            flex-grow: 1;
+
+            &:not(:empty) {
+                margin-right: $default_spacing;
+                margin-bottom: $default_spacing;
+            }
+        }
+    }
+
+    >div.wrapper{
+        max-width: 100%;
+        overflow: auto;
+    }
+}

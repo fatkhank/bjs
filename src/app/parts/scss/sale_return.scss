@@ -1,0 +1,50 @@
+@import './_variables.scss';
+.partSaleReturn {
+    .items_table {
+        .d-batch_num {
+            width: $width_column_batch_num;
+            max-width: $width_column_batch_num;
+            flex-grow: 0;
+        }
+        .d-line_qty {
+            width: 80px;
+            flex-grow: 0;
+        }
+        .d-line_sn {
+            width: $width_column_serial_num;
+            max-width: $width_column_serial_num;
+        }
+        .d-line_rmv {
+            width: $width_remove_btn;
+            flex-grow: 0;
+        }
+        .d-line_qc {
+            min-width: 100px;
+            flex-grow: 0;
+        }
+        .d-line_qc [btn] {
+            min-width: unset;
+        }
+    }
+    .v-actions i {
+        padding-right: 5px;
+    }
+    .card_archive .label {
+        margin: auto !important;
+        font-weight: bold;
+        font-size: larger;
+    }
+}
+
+.dialog_sret_qc_chksheet {
+    .d-qc_radio {
+        flex-grow: 0;
+        width: 40px;
+    }
+    .d-qc_note,
+    .v-old_note,
+    .v-note {
+        flex-grow: 0;
+        width: 200px;
+    }
+}

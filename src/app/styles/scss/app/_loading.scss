@@ -1,0 +1,77 @@
+//----- loading
+.loading-status {
+    display: none;
+}
+
+.show-loading {
+    // & > :not(.loading-status) {
+    //     //display: none !important;
+    // }
+
+    $color_strip1: rgba(0,0,0,.04);
+    $color_strip2: rgba(50,50,50,.03);
+    $loading_stripe_size: 30px;
+
+    > .loading-status {
+        @include absolute-container(0);
+        display: flex;
+        min-height: 50px;
+        background: rgba(216, 216, 216, 0.52);
+        z-index: $zxLoading;
+        overflow: hidden;
+        /*background-size: $loading_stripe_size $loading_stripe_size;
+        background-image: repeating-linear-gradient(45deg,$color_strip1 0%,$color_strip1 12.5%,$color_strip2 12.5%,$color_strip2 37.5%,$color_strip1 37.5%,$color_strip1 62.5%,$color_strip2 62.5%,$color_strip2 87.5%,$color_strip1 87.5%);
+        animation: strip_anim linear 800ms infinite;*/
+        .loading {
+            margin: auto;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .spinner > div {
+                background-color: rgba($color_primary_light, 1);
+                /*box-shadow:0 0 15px 4px rgba($color_primary_light, 1);*/
+            }
+
+            > .text:not(:empty) {
+                margin-top: 5px;
+                color: #333;
+                font-weight: bold;
+                font-size: 1.8em;
+            }
+        }
+    }
+
+    @-moz-keyframes strip_anim {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: (2*$loading_stripe_size) 0px;
+        }
+    }
+
+    @-webkit-keyframes strip_anim {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: (2*$loading_stripe_size) 0px;
+        }
+    }
+
+    @keyframes strip_anim {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: (2*$loading_stripe_size) 0px;
+        }
+    }
+}

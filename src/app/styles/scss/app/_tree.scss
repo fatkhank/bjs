@@ -1,0 +1,83 @@
+//--- tree
+.tree {
+    > div {
+        width: 100%;
+        display: inline-flex;
+
+        > [btn] {
+            width: 30px;
+            min-width: unset;
+        }
+
+        > [btn=tree_caret] {
+            visibility: hidden;
+        }
+
+        > div {
+            flex-grow: 1;
+        }
+    }
+
+    &.lapse {
+        > div {
+            > [btn=tree-caret] {
+                animation: rotate90 200ms forwards;
+            }
+        }
+
+        > ul {
+            display: none;
+        }
+    }
+
+    [btn=tree-unremove] {
+        display: none;
+    }
+
+    &.is-removed {
+        > .parent {
+            text-decoration: line-through;
+            color: $color_disabled;
+
+            > [btn=tree-remove] {
+                display: none;
+            }
+
+            > [btn=tree-unremove] {
+                display: block;
+            }
+        }
+
+        .tree > .parent {
+            text-decoration: line-through;
+            color: $color_disabled;
+        }
+    }
+}
+
+p-tree.tree {
+    list-style: none;
+    padding: 0;
+
+    > div {
+        display: flex;
+
+        > [btn=tree-add] {
+            width: 100%;
+        }
+    }
+
+    > ul {
+        margin-top: 0;
+        margin-left: 0 !important;
+        background: none !important;
+    }
+
+    ul {
+        list-style: none;
+        transform-origin: top;
+        margin-left: 40px;
+        padding: 0;
+        background: rgba(0,0,0,0.03);
+    }
+}
